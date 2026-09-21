@@ -1,0 +1,1629 @@
+{
+  "app": "wledtoy",
+  "formatVersion": 1,
+  "graph": {
+    "version": 3,
+    "nodes": [
+      {
+        "id": "song",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "data": {
+          "kind": "audioSource",
+          "values": {}
+        }
+      },
+      {
+        "id": "ringSpeed",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 238
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Ring Speed",
+            "value": 1.6,
+            "min": 0.5,
+            "max": 3.5
+          }
+        }
+      },
+      {
+        "id": "hueScatter",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 454
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Hue Scatter",
+            "value": 0.12,
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "wakeDecay",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 670
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Wake Decay",
+            "value": 0.15,
+            "min": 0.05,
+            "max": 1.5
+          }
+        }
+      },
+      {
+        "id": "audio",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 0
+        },
+        "data": {
+          "kind": "audio",
+          "values": {}
+        }
+      },
+      {
+        "id": "kickGate",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 0
+        },
+        "data": {
+          "kind": "schmittTrigger",
+          "values": {
+            "low": 0.5,
+            "high": 0.8
+          }
+        }
+      },
+      {
+        "id": "energySum",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 172
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add"
+          }
+        }
+      },
+      {
+        "id": "padEnv",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 366
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.06,
+            "release": 0.7
+          }
+        }
+      },
+      {
+        "id": "snareGate",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 538
+        },
+        "data": {
+          "kind": "schmittTrigger",
+          "values": {
+            "low": 0.1,
+            "high": 0.19
+          }
+        }
+      },
+      {
+        "id": "kickToggle",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 0
+        },
+        "data": {
+          "kind": "toggle",
+          "values": {}
+        }
+      },
+      {
+        "id": "kickPunch",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 128
+        },
+        "data": {
+          "kind": "envelope",
+          "values": {
+            "mode": "ad",
+            "attack": 0,
+            "decay": 0.18
+          }
+        }
+      },
+      {
+        "id": "kickCounter",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 366
+        },
+        "data": {
+          "kind": "counter",
+          "values": {
+            "steps": 12
+          }
+        }
+      },
+      {
+        "id": "energyEnv",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 560
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.25,
+            "release": 0.3
+          }
+        }
+      },
+      {
+        "id": "kickPresence",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 732
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.05,
+            "release": 0.4
+          }
+        }
+      },
+      {
+        "id": "snareEnv",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 904
+        },
+        "data": {
+          "kind": "envelope",
+          "values": {
+            "mode": "ad",
+            "attack": 0.01,
+            "decay": 0.22
+          }
+        }
+      },
+      {
+        "id": "toggleInverse",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "subtract",
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "ringLead",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 194
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0,
+            "inHigh": 1,
+            "outLow": 0,
+            "outHigh": -0.18
+          }
+        }
+      },
+      {
+        "id": "hitRandom",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 432
+        },
+        "data": {
+          "kind": "random",
+          "values": {}
+        }
+      },
+      {
+        "id": "ringPower",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 560
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.38,
+            "inHigh": 0.52,
+            "outLow": 0.6,
+            "outHigh": 1
+          }
+        }
+      },
+      {
+        "id": "ringThickness",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 798
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.38,
+            "inHigh": 0.52,
+            "outLow": 0.09,
+            "outHigh": 0.22
+          }
+        }
+      },
+      {
+        "id": "quietBoost",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 1036
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "mode": "mix",
+            "a": 1,
+            "b": 0.2
+          }
+        }
+      },
+      {
+        "id": "breathWave",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 1252
+        },
+        "data": {
+          "kind": "wave",
+          "values": {
+            "shape": "sine",
+            "frequency": 0.25,
+            "phase": 0.5
+          }
+        }
+      },
+      {
+        "id": "snareReach",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 1446
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0,
+            "inHigh": 1,
+            "outLow": 1.55,
+            "outHigh": 0.85
+          }
+        }
+      },
+      {
+        "id": "hitHue",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd"
+          }
+        }
+      },
+      {
+        "id": "ringAgeA",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 216
+        },
+        "data": {
+          "kind": "integrator",
+          "values": {
+            "wrap": false
+          }
+        }
+      },
+      {
+        "id": "ringAgeB",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 388
+        },
+        "data": {
+          "kind": "integrator",
+          "values": {
+            "wrap": false
+          }
+        }
+      },
+      {
+        "id": "baseLevel",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 560
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.1,
+            "inHigh": 0.3,
+            "outLow": 0.2
+          }
+        }
+      },
+      {
+        "id": "baseDrift",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 798
+        },
+        "data": {
+          "kind": "integrator",
+          "values": {
+            "wrap": false,
+            "rate": 0.25
+          }
+        }
+      },
+      {
+        "id": "spokeSpin",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 970
+        },
+        "data": {
+          "kind": "integrator",
+          "values": {
+            "wrap": true,
+            "rate": -0.3
+          }
+        }
+      },
+      {
+        "id": "polar",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 0
+        },
+        "data": {
+          "kind": "polar",
+          "values": {}
+        }
+      },
+      {
+        "id": "hueHoldA",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 0
+        },
+        "data": {
+          "kind": "sampleHold",
+          "values": {}
+        }
+      },
+      {
+        "id": "hueHoldB",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 150
+        },
+        "data": {
+          "kind": "sampleHold",
+          "values": {}
+        }
+      },
+      {
+        "id": "ringDistA",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 300
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "subtract"
+          }
+        }
+      },
+      {
+        "id": "ringDistB",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 494
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "subtract"
+          }
+        }
+      },
+      {
+        "id": "ringFalloff",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 688
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0,
+            "inHigh": 1.8,
+            "outHigh": 0
+          }
+        }
+      },
+      {
+        "id": "baseRadial",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 926
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add"
+          }
+        }
+      },
+      {
+        "id": "spokes",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 1120
+        },
+        "data": {
+          "kind": "wave",
+          "values": {
+            "shape": "sine",
+            "frequency": 6
+          }
+        }
+      },
+      {
+        "id": "ringColorA",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 0
+        },
+        "data": {
+          "kind": "combineColor",
+          "values": {
+            "mode": "hsv",
+            "b": 1,
+            "c": 1
+          }
+        }
+      },
+      {
+        "id": "ringMaskA",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 194
+        },
+        "data": {
+          "kind": "rangeSelect",
+          "values": {
+            "softness": 0.05
+          }
+        }
+      },
+      {
+        "id": "ringColorB",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 410
+        },
+        "data": {
+          "kind": "combineColor",
+          "values": {
+            "mode": "hsv",
+            "b": 1,
+            "c": 1
+          }
+        }
+      },
+      {
+        "id": "ringMaskB",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 604
+        },
+        "data": {
+          "kind": "rangeSelect",
+          "values": {
+            "softness": 0.05
+          }
+        }
+      },
+      {
+        "id": "snareRim",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 820
+        },
+        "data": {
+          "kind": "mask",
+          "values": {
+            "softness": 0.12
+          }
+        }
+      },
+      {
+        "id": "snareRamp",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 1014
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "ease",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0,
+                    0.25,
+                    1
+                  ]
+                },
+                {
+                  "position": 0.55,
+                  "color": [
+                    0.05,
+                    0.85,
+                    1
+                  ]
+                },
+                {
+                  "position": 1,
+                  "color": [
+                    0.6,
+                    0.95,
+                    1
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "baseNoise",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 0
+        },
+        "data": {
+          "kind": "noiseTexture",
+          "values": {
+            "scale": 5.5,
+            "detail": 0,
+            "roughness": 0.5,
+            "distortion": 0
+          }
+        }
+      },
+      {
+        "id": "baseRamp",
+        "type": "shader",
+        "position": {
+          "x": 3000,
+          "y": 0
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "ease",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "position": 0.16,
+                  "color": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "position": 0.32,
+                  "color": [
+                    0,
+                    0.03,
+                    0.55
+                  ]
+                },
+                {
+                  "position": 0.52,
+                  "color": [
+                    0.35,
+                    0,
+                    0.9
+                  ]
+                },
+                {
+                  "position": 0.84,
+                  "color": [
+                    0.95,
+                    0.05,
+                    0.5
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "baseLayer",
+        "type": "shader",
+        "position": {
+          "x": 3300,
+          "y": 0
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "mix",
+            "base": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "id": "addRingA",
+        "type": "shader",
+        "position": {
+          "x": 3600,
+          "y": 0
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "add"
+          }
+        }
+      },
+      {
+        "id": "addRingB",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 0
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "add"
+          }
+        }
+      },
+      {
+        "id": "addSnare",
+        "type": "shader",
+        "position": {
+          "x": 4200,
+          "y": 0
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "screen",
+            "opacity": 0.9
+          }
+        }
+      },
+      {
+        "id": "wake",
+        "type": "shader",
+        "position": {
+          "x": 4500,
+          "y": 0
+        },
+        "data": {
+          "kind": "trails",
+          "values": {}
+        }
+      },
+      {
+        "id": "out",
+        "type": "shader",
+        "position": {
+          "x": 4800,
+          "y": 0
+        },
+        "data": {
+          "kind": "output",
+          "values": {
+            "gamma": 2,
+            "dithering": "temporal"
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-song-audio-audio-audio",
+        "source": "song",
+        "sourceHandle": "audio",
+        "target": "audio",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-kick-kickGate-signal",
+        "source": "audio",
+        "sourceHandle": "kick",
+        "target": "kickGate",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-presence-snareGate-signal",
+        "source": "audio",
+        "sourceHandle": "presence",
+        "target": "snareGate",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-vocal-padEnv-signal",
+        "source": "audio",
+        "sourceHandle": "vocal",
+        "target": "padEnv",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickGate-gate-kickToggle-trigger",
+        "source": "kickGate",
+        "sourceHandle": "gate",
+        "target": "kickToggle",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickGate-gate-kickPunch-gate",
+        "source": "kickGate",
+        "sourceHandle": "gate",
+        "target": "kickPunch",
+        "targetHandle": "gate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickPunch-envelope-ringLead-value",
+        "source": "kickPunch",
+        "sourceHandle": "envelope",
+        "target": "ringLead",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringLead-result-ringMaskA-from",
+        "source": "ringLead",
+        "sourceHandle": "result",
+        "target": "ringMaskA",
+        "targetHandle": "from",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringLead-result-ringMaskB-from",
+        "source": "ringLead",
+        "sourceHandle": "result",
+        "target": "ringMaskB",
+        "targetHandle": "from",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickGate-gate-kickCounter-trigger",
+        "source": "kickGate",
+        "sourceHandle": "gate",
+        "target": "kickCounter",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickGate-gate-kickPresence-signal",
+        "source": "kickGate",
+        "sourceHandle": "gate",
+        "target": "kickPresence",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-air-energySum-a",
+        "source": "audio",
+        "sourceHandle": "air",
+        "target": "energySum",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-vocal-energySum-b",
+        "source": "audio",
+        "sourceHandle": "vocal",
+        "target": "energySum",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-energySum-result-energyEnv-signal",
+        "source": "energySum",
+        "sourceHandle": "result",
+        "target": "energyEnv",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareGate-gate-snareEnv-gate",
+        "source": "snareGate",
+        "sourceHandle": "gate",
+        "target": "snareEnv",
+        "targetHandle": "gate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickToggle-state-toggleInverse-b",
+        "source": "kickToggle",
+        "sourceHandle": "state",
+        "target": "toggleInverse",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickCounter-count-hitRandom-seed",
+        "source": "kickCounter",
+        "sourceHandle": "count",
+        "target": "hitRandom",
+        "targetHandle": "seed",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-energyEnv-envelope-ringPower-value",
+        "source": "energyEnv",
+        "sourceHandle": "envelope",
+        "target": "ringPower",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-energyEnv-envelope-ringThickness-value",
+        "source": "energyEnv",
+        "sourceHandle": "envelope",
+        "target": "ringThickness",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickPresence-envelope-quietBoost-factor",
+        "source": "kickPresence",
+        "sourceHandle": "envelope",
+        "target": "quietBoost",
+        "targetHandle": "factor",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareEnv-envelope-snareReach-value",
+        "source": "snareEnv",
+        "sourceHandle": "envelope",
+        "target": "snareReach",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hitRandom-value-hitHue-a",
+        "source": "hitRandom",
+        "sourceHandle": "value",
+        "target": "hitHue",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hueScatter-value-hitHue-b",
+        "source": "hueScatter",
+        "sourceHandle": "value",
+        "target": "hitHue",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickCounter-phase-hitHue-c",
+        "source": "kickCounter",
+        "sourceHandle": "phase",
+        "target": "hitHue",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hitHue-result-hueHoldA-signal",
+        "source": "hitHue",
+        "sourceHandle": "result",
+        "target": "hueHoldA",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hitHue-result-hueHoldB-signal",
+        "source": "hitHue",
+        "sourceHandle": "result",
+        "target": "hueHoldB",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickToggle-state-hueHoldA-trigger",
+        "source": "kickToggle",
+        "sourceHandle": "state",
+        "target": "hueHoldA",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-toggleInverse-result-hueHoldB-trigger",
+        "source": "toggleInverse",
+        "sourceHandle": "result",
+        "target": "hueHoldB",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickToggle-state-ringAgeA-reset",
+        "source": "kickToggle",
+        "sourceHandle": "state",
+        "target": "ringAgeA",
+        "targetHandle": "reset",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-toggleInverse-result-ringAgeB-reset",
+        "source": "toggleInverse",
+        "sourceHandle": "result",
+        "target": "ringAgeB",
+        "targetHandle": "reset",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringSpeed-value-ringAgeA-rate",
+        "source": "ringSpeed",
+        "sourceHandle": "value",
+        "target": "ringAgeA",
+        "targetHandle": "rate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringSpeed-value-ringAgeB-rate",
+        "source": "ringSpeed",
+        "sourceHandle": "value",
+        "target": "ringAgeB",
+        "targetHandle": "rate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-padEnv-envelope-baseLevel-value",
+        "source": "padEnv",
+        "sourceHandle": "envelope",
+        "target": "baseLevel",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-breathWave-value-baseLevel-outHigh",
+        "source": "breathWave",
+        "sourceHandle": "value",
+        "target": "baseLevel",
+        "targetHandle": "outHigh",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringAgeA-value-ringDistA-a",
+        "source": "ringAgeA",
+        "sourceHandle": "value",
+        "target": "ringDistA",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-polar-radius-ringDistA-b",
+        "source": "polar",
+        "sourceHandle": "radius",
+        "target": "ringDistA",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringAgeB-value-ringDistB-a",
+        "source": "ringAgeB",
+        "sourceHandle": "value",
+        "target": "ringDistB",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-polar-radius-ringDistB-b",
+        "source": "polar",
+        "sourceHandle": "radius",
+        "target": "ringDistB",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-polar-radius-ringFalloff-value",
+        "source": "polar",
+        "sourceHandle": "radius",
+        "target": "ringFalloff",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringPower-result-ringFalloff-outLow",
+        "source": "ringPower",
+        "sourceHandle": "result",
+        "target": "ringFalloff",
+        "targetHandle": "outLow",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-polar-radius-baseRadial-a",
+        "source": "polar",
+        "sourceHandle": "radius",
+        "target": "baseRadial",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-baseDrift-value-baseRadial-b",
+        "source": "baseDrift",
+        "sourceHandle": "value",
+        "target": "baseRadial",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-polar-angle-spokes-input",
+        "source": "polar",
+        "sourceHandle": "angle",
+        "target": "spokes",
+        "targetHandle": "input",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-spokeSpin-value-spokes-phase",
+        "source": "spokeSpin",
+        "sourceHandle": "value",
+        "target": "spokes",
+        "targetHandle": "phase",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hueHoldA-value-ringColorA-a",
+        "source": "hueHoldA",
+        "sourceHandle": "value",
+        "target": "ringColorA",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hueHoldB-value-ringColorB-a",
+        "source": "hueHoldB",
+        "sourceHandle": "value",
+        "target": "ringColorB",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringDistA-result-ringMaskA-value",
+        "source": "ringDistA",
+        "sourceHandle": "result",
+        "target": "ringMaskA",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringDistB-result-ringMaskB-value",
+        "source": "ringDistB",
+        "sourceHandle": "result",
+        "target": "ringMaskB",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringThickness-result-ringMaskA-to",
+        "source": "ringThickness",
+        "sourceHandle": "result",
+        "target": "ringMaskA",
+        "targetHandle": "to",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringThickness-result-ringMaskB-to",
+        "source": "ringThickness",
+        "sourceHandle": "result",
+        "target": "ringMaskB",
+        "targetHandle": "to",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-polar-radius-snareRim-value",
+        "source": "polar",
+        "sourceHandle": "radius",
+        "target": "snareRim",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareReach-result-snareRim-threshold",
+        "source": "snareReach",
+        "sourceHandle": "result",
+        "target": "snareRim",
+        "targetHandle": "threshold",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-spokes-value-snareRamp-fac",
+        "source": "spokes",
+        "sourceHandle": "value",
+        "target": "snareRamp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-baseRadial-result-baseNoise-vector",
+        "source": "baseRadial",
+        "sourceHandle": "result",
+        "target": "baseNoise",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-baseNoise-fac-baseRamp-fac",
+        "source": "baseNoise",
+        "sourceHandle": "fac",
+        "target": "baseRamp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-baseRamp-color-baseLayer-layer",
+        "source": "baseRamp",
+        "sourceHandle": "color",
+        "target": "baseLayer",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-baseLevel-result-baseLayer-opacity",
+        "source": "baseLevel",
+        "sourceHandle": "result",
+        "target": "baseLayer",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-quietBoost-result-baseLayer-mask",
+        "source": "quietBoost",
+        "sourceHandle": "result",
+        "target": "baseLayer",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-baseLayer-color-addRingA-base",
+        "source": "baseLayer",
+        "sourceHandle": "color",
+        "target": "addRingA",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringColorA-color-addRingA-layer",
+        "source": "ringColorA",
+        "sourceHandle": "color",
+        "target": "addRingA",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringFalloff-result-addRingA-opacity",
+        "source": "ringFalloff",
+        "sourceHandle": "result",
+        "target": "addRingA",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringMaskA-mask-addRingA-mask",
+        "source": "ringMaskA",
+        "sourceHandle": "mask",
+        "target": "addRingA",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-addRingA-color-addRingB-base",
+        "source": "addRingA",
+        "sourceHandle": "color",
+        "target": "addRingB",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringColorB-color-addRingB-layer",
+        "source": "ringColorB",
+        "sourceHandle": "color",
+        "target": "addRingB",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringFalloff-result-addRingB-opacity",
+        "source": "ringFalloff",
+        "sourceHandle": "result",
+        "target": "addRingB",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ringMaskB-mask-addRingB-mask",
+        "source": "ringMaskB",
+        "sourceHandle": "mask",
+        "target": "addRingB",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-addRingB-color-addSnare-base",
+        "source": "addRingB",
+        "sourceHandle": "color",
+        "target": "addSnare",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareRamp-color-addSnare-layer",
+        "source": "snareRamp",
+        "sourceHandle": "color",
+        "target": "addSnare",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareRim-mask-addSnare-mask",
+        "source": "snareRim",
+        "sourceHandle": "mask",
+        "target": "addSnare",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-addSnare-color-wake-color",
+        "source": "addSnare",
+        "sourceHandle": "color",
+        "target": "wake",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-wakeDecay-value-wake-decay",
+        "source": "wakeDecay",
+        "sourceHandle": "value",
+        "target": "wake",
+        "targetHandle": "decay",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-wake-color-out-color",
+        "source": "wake",
+        "sourceHandle": "color",
+        "target": "out",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      }
+    ]
+  }
+}

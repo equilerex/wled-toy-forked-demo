@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-bridge-frame"
+description = "Enables the bridge_frame command without any pre-configured scope."
+commands.allow = ["bridge_frame"]
+
+[[permission]]
+identifier = "deny-bridge-frame"
+description = "Denies the bridge_frame command without any pre-configured scope."
+commands.deny = ["bridge_frame"]

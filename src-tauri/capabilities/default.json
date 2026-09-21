@@ -1,0 +1,23 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "The main window: core defaults (the menu commands among them), dragging and double click zoom from the app's own title bar, title and close for the document flow, the UDP bridge commands, open and save dialogs, and file access to what a dialog returned plus .wledgraph, .glsl, .frag and .fs files under the home folder for Open Recent",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-start-dragging",
+    "core:window:allow-internal-toggle-maximize",
+    "core:window:allow-set-title",
+    "core:window:allow-close",
+    "core:window:allow-destroy",
+    "allow-bridge-open",
+    "allow-bridge-config",
+    "allow-bridge-frame",
+    "allow-bridge-close",
+    "dialog:allow-open",
+    "dialog:allow-save",
+    { "identifier": "opener:allow-open-url", "allow": [{ "url": "https://github.com/*" }] },
+    { "identifier": "fs:allow-read-text-file", "allow": [{ "path": "$HOME/**/*.wledgraph" }, { "path": "$HOME/**/*.glsl" }, { "path": "$HOME/**/*.frag" }, { "path": "$HOME/**/*.fs" }] },
+    { "identifier": "fs:allow-write-text-file", "allow": [{ "path": "$HOME/**/*.wledgraph" }, { "path": "$HOME/**/*.glsl" }, { "path": "$HOME/**/*.frag" }, { "path": "$HOME/**/*.fs" }] }
+  ]
+}

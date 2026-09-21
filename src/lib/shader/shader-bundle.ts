@@ -1,0 +1,105 @@
+import { AUDIO_BINS, HISTORY_ROWS, WAVE_ROWS, WAVE_WIDTH } from '@/lib/audio/textures'
+import { AUDIO_EXTRA_SLOTS, CONTROL_VECTORS, IMAGE_LAYERS, IMAGE_LAYER_SIZE, PRELUDE } from './glsl'
+
+/** What a host has to feed each uniform of the prelude; the header of a bundle quotes the ones it declares. */
+export const UNIFORM_CONTRACT: Record<string, string> = {
+  iResolution: 'size of the render target in pixels as (width, height, 1). A target one pixel high is the LED pass: one pixel per LED, in wire order.',
+  iTime: 'seconds since the animation started.',
+  iFrame: 'frame counter, from 0.',
+  iLedCount: 'number of LEDs on the strip.',
+  iScanY: 'which row of the 2D picture the LED pass samples, 0 (bottom) to 1 (top). Only read when there is no LED layout.',
+  iAudio: `R8 texture, ${AUDIO_BINS} x 2, linear filtering, clamped. Row 0: FFT magnitudes 0 to 1, lowest frequency first. Row 1: the waveform, 0.5 is silence.`,
+  iImage: 'RGBA8 image of any size, linear filtering, clamped, first row at the top (the helpers flip y).',
+  iImages: `RGBA8 2D array texture, ${IMAGE_LAYERS} layers of ${IMAGE_LAYER_SIZE} x ${IMAGE_LAYER_SIZE}, linear filtering, clamped: one image per layer.`,
+  iAudioBands: 'R8 texture, N x 2 with N at least 12, linear filtering, clamped. Row 0: N band levels 0 to 1 (log or mel spaced), bass first. Row 1: the 12 pitch classes from C in texels 0 to 11.',
+  iAudioHistory: `R8 texture, N x ${HISTORY_ROWS}, linear filtering, clamped in x and repeating in y: one row of band levels per analysis hop, written as a ring. iAudioHeads.x is the newest row.`,
+  iAudioBandsExtra: `${AUDIO_EXTRA_SLOTS} more textures shaped like iAudioBands, for analyses with other settings (slots 1 to ${AUDIO_EXTRA_SLOTS}). Every element needs a texture unit of its own.`,
+  iAudioHistoryExtra: `${AUDIO_EXTRA_SLOTS} more textures shaped like iAudioHistory, one per extra analysis. Every element needs a texture unit of its own.`,
+  iAudioHistoryHeadExtra: 'the newest row of each iAudioHistoryExtra texture.',
+  iAudioWave: `R8 texture, ${WAVE_WIDTH} x ${WAVE_ROWS}, repeating in y: the most recent samples as a ring in row-major order, 128 is silence.`,
+  iAudioHeads: '(newest row of iAudioHistory, index of the next sample to be written to iAudioWave, sample rate in Hz).',
+  iLayout: 'RGBA32F texture, iLayoutCount x 1, nearest filtering: x, y, z (0 to 1) and segment index of every LED in wire order.',
+  iLayoutCount: 'number of LEDs in iLayout, or 0 for a plain strip that samples the row at iScanY.',
+  iPrevFrame: 'what this shader drew into the same target on the previous frame (render to two targets in turn), linear filtering, clamped.',
+  iTimeDelta: 'seconds since the previous frame of the same target.',
+  iControl: `${CONTROL_VECTORS} vec4 of values that WLEDtoy's graph mode computes on the CPU every frame; slot k is iControl[k / 4][k % 4]. This file does not carry what computes them: a host that cannot supply them leaves them at 0.`,
+}
+
+interface Chunk {
+  kind: 'uniform' | 'function'
+  name: string
+  text: string
+}
+
+const withoutComments = (code: string) => code.replace(/\/\/.*|\/\*[\s\S]*?\*\//g, '')
+const identifiers = (code: string) => withoutComments(code).match(/[A-Za-z_]\w*/g) ?? []
+const braceDepth = (text: string) => text.split('{').length - text.split('}').length
+
+/** The uniforms and the function definitions of the prelude in source order, each function with the comment above it. */
+function preludeChunks(): Chunk[] {
+  const chunks: Chunk[] = []
+  const lines = PRELUDE.split('\n')
+  let comments: string[] = []
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].startsWith('//')) {
+      comments.push(lines[i])
+      continue
+    }
+    const uniform = /^uniform\s+(?:highp\s+)?\w+\s+(\w+)/.exec(lines[i])
+    const definition = /^\w+\s+(\w+)\s*\([^)]*\)\s*\{/.exec(lines[i])
+    if (uniform) chunks.push({ kind: 'uniform', name: uniform[1], text: lines[i] })
+    if (definition) {
+      let text = lines[i]
+      while (braceDepth(text) > 0) text += `\n${lines[++i]}`
+      chunks.push({ kind: 'function', name: definition[1], text: [...comments, text].join('\n') })
+    }
+    comments = []
+  }
+  return chunks
+}
+
+/**
+ * One fragment shader that compiles outside this app: the uniforms the code reads, the prelude helpers it calls
+ * (and what those call), the code itself and the `main` that runs `mainImage`. Nothing the code does not reach is included.
+ */
+export function bundleShader(code: string, title = 'Untitled'): string {
+  const chunks = preludeChunks()
+  const byName = new Map(chunks.map((chunk) => [chunk.name, chunk]))
+  const main = byName.get('main')!
+  const used = new Set<Chunk>()
+  const pending = [...identifiers(code), ...identifiers(main.text)]
+  while (pending.length) {
+    const chunk = byName.get(pending.pop()!)
+    if (!chunk || used.has(chunk)) continue
+    used.add(chunk)
+    if (chunk.kind === 'function') pending.push(...identifiers(chunk.text))
+  }
+  const uniforms = chunks.filter((chunk) => chunk.kind === 'uniform' && used.has(chunk))
+  const helpers = chunks.filter((chunk) => chunk.kind === 'function' && chunk !== main && used.has(chunk))
+  const width = Math.max(...uniforms.map((u) => u.name.length))
+
+  return [
+    '#version 300 es',
+    `// ${title}`,
+    '// A standalone fragment shader exported from WLEDtoy. It needs nothing else to compile as GLSL ES 3.00 (WebGL2, OpenGL ES 3).',
+    '//',
+    '// Running it: draw one triangle or quad that covers the whole target. Only gl_FragCoord is read, so the vertex shader',
+    '// passes nothing on. The color leaves through outColor. mainImage gets uv from 0 to 1 with the origin at the bottom left,',
+    '// and the index of the LED the pixel belongs to.',
+    '//',
+    '// Uniforms the host sets. One left alone reads 0, and samplers of different types must not share a texture unit.',
+    ...uniforms.map((u) => `//   ${u.name.padEnd(width)}  ${UNIFORM_CONTRACT[u.name]}`),
+    'precision highp float;',
+    '',
+    ...uniforms.map((u) => u.text),
+    '',
+    'out vec4 outColor;',
+    '',
+    ...helpers.map((helper) => helper.text),
+    '',
+    code.trim(),
+    '',
+    main.text,
+    '',
+  ].join('\n')
+}

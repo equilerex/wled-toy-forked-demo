@@ -1,0 +1,1700 @@
+{
+  "app": "wledtoy",
+  "formatVersion": 1,
+  "graph": {
+    "version": 3,
+    "nodes": [
+      {
+        "id": "song",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "data": {
+          "kind": "audioSource",
+          "values": {
+            "agcRelease": 8
+          }
+        }
+      },
+      {
+        "id": "audio",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 0
+        },
+        "data": {
+          "kind": "audio",
+          "values": {}
+        }
+      },
+      {
+        "id": "barBallistics",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 0
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.015,
+            "release": 0.28
+          }
+        }
+      },
+      {
+        "id": "kickPresence",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 240
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0,
+            "release": 0.6
+          }
+        }
+      },
+      {
+        "id": "drumsGone",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 240
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "lessThan",
+            "b": 0.15
+          }
+        }
+      },
+      {
+        "id": "dropTension",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 240
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.7,
+            "release": 4
+          }
+        }
+      },
+      {
+        "id": "barReach",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": -40
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Bar Reach",
+            "value": 0.72,
+            "min": 0.4,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "reach",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 0
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0,
+            "inHigh": 0.8,
+            "outHigh": 0.94
+          }
+        }
+      },
+      {
+        "id": "barLength",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply"
+          }
+        }
+      },
+      {
+        "id": "peakHang",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 0
+        },
+        "data": {
+          "kind": "peakHold",
+          "values": {
+            "hold": 0.35,
+            "decay": 0.5
+          }
+        }
+      },
+      {
+        "id": "barAtPeak",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 240
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "compare",
+            "c": 0.005
+          }
+        }
+      },
+      {
+        "id": "fallSpeed",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 240
+        },
+        "data": {
+          "kind": "integrator",
+          "values": {
+            "wrap": false,
+            "rate": 6
+          }
+        }
+      },
+      {
+        "id": "peakGravity",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 0
+        },
+        "data": {
+          "kind": "slewLimiter",
+          "values": {
+            "rise": 1000
+          }
+        }
+      },
+      {
+        "id": "kickGate",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 480
+        },
+        "data": {
+          "kind": "schmittTrigger",
+          "values": {
+            "low": 0.5,
+            "high": 0.85
+          }
+        }
+      },
+      {
+        "id": "alternateKick",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 480
+        },
+        "data": {
+          "kind": "toggle",
+          "values": {}
+        }
+      },
+      {
+        "id": "meteorArmed",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 480
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "maximum"
+          }
+        }
+      },
+      {
+        "id": "meteorTrigger",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 480
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply"
+          }
+        }
+      },
+      {
+        "id": "meteorFlight",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 480
+        },
+        "data": {
+          "kind": "envelope",
+          "values": {
+            "mode": "ad",
+            "attack": 0,
+            "decay": 0.68
+          }
+        }
+      },
+      {
+        "id": "meteorHead",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 480
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 1,
+            "inHigh": 0,
+            "outLow": 0.45,
+            "outHigh": 1.5
+          }
+        }
+      },
+      {
+        "id": "meteorGlow",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 720
+        },
+        "data": {
+          "kind": "envelope",
+          "values": {
+            "mode": "ad",
+            "attack": 0,
+            "decay": 1.4
+          }
+        }
+      },
+      {
+        "id": "highEnv",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 720
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.02,
+            "release": 0.4
+          }
+        }
+      },
+      {
+        "id": "leadSlow",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 960
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.3,
+            "release": 0.3
+          }
+        }
+      },
+      {
+        "id": "leadTransient",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 960
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "subtract"
+          }
+        }
+      },
+      {
+        "id": "leadSpark",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 960
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.02,
+            "inHigh": 0.1,
+            "outLow": 0
+          }
+        }
+      },
+      {
+        "id": "sparkDrive",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 960
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "maximum"
+          }
+        }
+      },
+      {
+        "id": "sparkGate",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 960
+        },
+        "data": {
+          "kind": "schmittTrigger",
+          "values": {
+            "low": 0.09,
+            "high": 0.15
+          }
+        }
+      },
+      {
+        "id": "time",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 1200
+        },
+        "data": {
+          "kind": "time",
+          "values": {}
+        }
+      },
+      {
+        "id": "sparkSeed",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 1200
+        },
+        "data": {
+          "kind": "sampleHold",
+          "values": {}
+        }
+      },
+      {
+        "id": "sparkFlash",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 960
+        },
+        "data": {
+          "kind": "envelope",
+          "values": {
+            "mode": "ad",
+            "attack": 0.01,
+            "decay": 0.22
+          }
+        }
+      },
+      {
+        "id": "mirror",
+        "type": "shader",
+        "position": {
+          "x": 3000,
+          "y": 0
+        },
+        "data": {
+          "kind": "mirror",
+          "values": {
+            "axis": "both",
+            "mode": "fromCenter"
+          }
+        }
+      },
+      {
+        "id": "radius",
+        "type": "shader",
+        "position": {
+          "x": 3300,
+          "y": 0
+        },
+        "data": {
+          "kind": "vectorMath",
+          "values": {
+            "op": "length"
+          }
+        }
+      },
+      {
+        "id": "segments",
+        "type": "shader",
+        "position": {
+          "x": 3600,
+          "y": 240
+        },
+        "data": {
+          "kind": "segmentSplit",
+          "values": {
+            "count": 6
+          }
+        }
+      },
+      {
+        "id": "segmentGaps",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 240
+        },
+        "data": {
+          "kind": "rangeSelect",
+          "values": {
+            "from": 0,
+            "to": 0.8,
+            "softness": 0.04
+          }
+        }
+      },
+      {
+        "id": "barMask",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 0
+        },
+        "data": {
+          "kind": "mask",
+          "values": {
+            "invert": true,
+            "softness": 0.03
+          }
+        }
+      },
+      {
+        "id": "heat",
+        "type": "shader",
+        "position": {
+          "x": 3600,
+          "y": 480
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": 0.5
+          }
+        }
+      },
+      {
+        "id": "meteorTailEnd",
+        "type": "shader",
+        "position": {
+          "x": 3600,
+          "y": 720
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "subtract",
+            "b": 0.07
+          }
+        }
+      },
+      {
+        "id": "meteorMask",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 720
+        },
+        "data": {
+          "kind": "rangeSelect",
+          "values": {
+            "softness": 0.02
+          }
+        }
+      },
+      {
+        "id": "peakEdge",
+        "type": "shader",
+        "position": {
+          "x": 3600,
+          "y": 960
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "b": 0.025
+          }
+        }
+      },
+      {
+        "id": "peakDot",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 960
+        },
+        "data": {
+          "kind": "rangeSelect",
+          "values": {
+            "softness": 0.015
+          }
+        }
+      },
+      {
+        "id": "ledLayout",
+        "type": "shader",
+        "position": {
+          "x": 3000,
+          "y": 1200
+        },
+        "data": {
+          "kind": "ledLayout",
+          "values": {}
+        }
+      },
+      {
+        "id": "sparkCoords",
+        "type": "shader",
+        "position": {
+          "x": 3300,
+          "y": 1200
+        },
+        "data": {
+          "kind": "combineXYZ",
+          "values": {}
+        }
+      },
+      {
+        "id": "sparkNoise",
+        "type": "shader",
+        "position": {
+          "x": 3600,
+          "y": 1200
+        },
+        "data": {
+          "kind": "whiteNoise",
+          "values": {}
+        }
+      },
+      {
+        "id": "sparkPick",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 1200
+        },
+        "data": {
+          "kind": "mask",
+          "values": {
+            "threshold": 0.93,
+            "softness": 0.01
+          }
+        }
+      },
+      {
+        "id": "barGlow",
+        "type": "shader",
+        "position": {
+          "x": 3600,
+          "y": -20
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.22,
+            "inHigh": 0.5,
+            "outLow": 0.35,
+            "outHigh": 1
+          }
+        }
+      },
+      {
+        "id": "barRamp",
+        "type": "shader",
+        "position": {
+          "x": 4200,
+          "y": 480
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "linear",
+              "stops": [
+                {
+                  "position": 0.0,
+                  "color": [
+                    0.0,
+                    0.35,
+                    0.8
+                  ]
+                },
+                {
+                  "position": 0.2,
+                  "color": [
+                    0.0,
+                    0.65,
+                    0.6
+                  ]
+                },
+                {
+                  "position": 0.42,
+                  "color": [
+                    0.0,
+                    0.8,
+                    0.25
+                  ]
+                },
+                {
+                  "position": 0.6,
+                  "color": [
+                    0.95,
+                    0.65,
+                    0.0
+                  ]
+                },
+                {
+                  "position": 0.8,
+                  "color": [
+                    1.0,
+                    0.16,
+                    0.0
+                  ]
+                },
+                {
+                  "position": 1.0,
+                  "color": [
+                    1.0,
+                    0.0,
+                    0.3
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "barShade",
+        "type": "shader",
+        "position": {
+          "x": 4500,
+          "y": 480
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply"
+          }
+        }
+      },
+      {
+        "id": "sparkLayer",
+        "type": "shader",
+        "position": {
+          "x": 4200,
+          "y": 1200
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "base": [
+              0,
+              0,
+              0
+            ],
+            "layer": [
+              0.6,
+              0.9,
+              1.0
+            ]
+          }
+        }
+      },
+      {
+        "id": "barLayer",
+        "type": "shader",
+        "position": {
+          "x": 4800,
+          "y": 240
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {}
+        }
+      },
+      {
+        "id": "meteorLayer",
+        "type": "shader",
+        "position": {
+          "x": 4500,
+          "y": 960
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "layer": [
+              0.9,
+              0.25,
+              1.0
+            ]
+          }
+        }
+      },
+      {
+        "id": "peakLayer",
+        "type": "shader",
+        "position": {
+          "x": 5100,
+          "y": 720
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "layer": [
+              1.0,
+              0.9,
+              0.75
+            ]
+          }
+        }
+      },
+      {
+        "id": "hueShift",
+        "type": "shader",
+        "position": {
+          "x": 5100,
+          "y": 240
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Hue Shift",
+            "value": 0,
+            "min": -0.5,
+            "max": 0.5
+          }
+        }
+      },
+      {
+        "id": "hueRotate",
+        "type": "shader",
+        "position": {
+          "x": 5400,
+          "y": 480
+        },
+        "data": {
+          "kind": "hueSaturation",
+          "values": {}
+        }
+      },
+      {
+        "id": "tailLength",
+        "type": "shader",
+        "position": {
+          "x": 5400,
+          "y": 0
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Tail Length",
+            "value": 0.15,
+            "min": 0.02,
+            "max": 0.8
+          }
+        }
+      },
+      {
+        "id": "trails",
+        "type": "shader",
+        "position": {
+          "x": 5700,
+          "y": 480
+        },
+        "data": {
+          "kind": "trails",
+          "values": {}
+        }
+      },
+      {
+        "id": "out",
+        "type": "shader",
+        "position": {
+          "x": 6000,
+          "y": 480
+        },
+        "data": {
+          "kind": "output",
+          "values": {
+            "gamma": 2.2,
+            "dithering": "temporal"
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-song-audio-audio-audio",
+        "source": "song",
+        "sourceHandle": "audio",
+        "target": "audio",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-level-barBallistics-signal",
+        "source": "audio",
+        "sourceHandle": "level",
+        "target": "barBallistics",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-kick-kickPresence-signal",
+        "source": "audio",
+        "sourceHandle": "kick",
+        "target": "kickPresence",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickPresence-envelope-drumsGone-a",
+        "source": "kickPresence",
+        "sourceHandle": "envelope",
+        "target": "drumsGone",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-drumsGone-result-dropTension-signal",
+        "source": "drumsGone",
+        "sourceHandle": "result",
+        "target": "dropTension",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropTension-envelope-reach-value",
+        "source": "dropTension",
+        "sourceHandle": "envelope",
+        "target": "reach",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barReach-value-reach-outLow",
+        "source": "barReach",
+        "sourceHandle": "value",
+        "target": "reach",
+        "targetHandle": "outLow",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barBallistics-envelope-barLength-a",
+        "source": "barBallistics",
+        "sourceHandle": "envelope",
+        "target": "barLength",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-reach-result-barLength-b",
+        "source": "reach",
+        "sourceHandle": "result",
+        "target": "barLength",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barLength-result-peakHang-signal",
+        "source": "barLength",
+        "sourceHandle": "result",
+        "target": "peakHang",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barLength-result-barAtPeak-a",
+        "source": "barLength",
+        "sourceHandle": "result",
+        "target": "barAtPeak",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-peakHang-peak-barAtPeak-b",
+        "source": "peakHang",
+        "sourceHandle": "peak",
+        "target": "barAtPeak",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barAtPeak-result-fallSpeed-reset",
+        "source": "barAtPeak",
+        "sourceHandle": "result",
+        "target": "fallSpeed",
+        "targetHandle": "reset",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barLength-result-peakGravity-signal",
+        "source": "barLength",
+        "sourceHandle": "result",
+        "target": "peakGravity",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-fallSpeed-value-peakGravity-fall",
+        "source": "fallSpeed",
+        "sourceHandle": "value",
+        "target": "peakGravity",
+        "targetHandle": "fall",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-kick-kickGate-signal",
+        "source": "audio",
+        "sourceHandle": "kick",
+        "target": "kickGate",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickGate-gate-alternateKick-trigger",
+        "source": "kickGate",
+        "sourceHandle": "gate",
+        "target": "alternateKick",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-alternateKick-state-meteorArmed-a",
+        "source": "alternateKick",
+        "sourceHandle": "state",
+        "target": "meteorArmed",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropTension-envelope-meteorArmed-b",
+        "source": "dropTension",
+        "sourceHandle": "envelope",
+        "target": "meteorArmed",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickGate-gate-meteorTrigger-a",
+        "source": "kickGate",
+        "sourceHandle": "gate",
+        "target": "meteorTrigger",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-meteorArmed-result-meteorTrigger-b",
+        "source": "meteorArmed",
+        "sourceHandle": "result",
+        "target": "meteorTrigger",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-meteorTrigger-result-meteorFlight-gate",
+        "source": "meteorTrigger",
+        "sourceHandle": "result",
+        "target": "meteorFlight",
+        "targetHandle": "gate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-meteorFlight-envelope-meteorHead-value",
+        "source": "meteorFlight",
+        "sourceHandle": "envelope",
+        "target": "meteorHead",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-meteorTrigger-result-meteorGlow-gate",
+        "source": "meteorTrigger",
+        "sourceHandle": "result",
+        "target": "meteorGlow",
+        "targetHandle": "gate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-air-highEnv-signal",
+        "source": "audio",
+        "sourceHandle": "air",
+        "target": "highEnv",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-vocal-leadSlow-signal",
+        "source": "audio",
+        "sourceHandle": "vocal",
+        "target": "leadSlow",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-vocal-leadTransient-a",
+        "source": "audio",
+        "sourceHandle": "vocal",
+        "target": "leadTransient",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-leadSlow-envelope-leadTransient-b",
+        "source": "leadSlow",
+        "sourceHandle": "envelope",
+        "target": "leadTransient",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-leadTransient-result-leadSpark-value",
+        "source": "leadTransient",
+        "sourceHandle": "result",
+        "target": "leadSpark",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropTension-envelope-leadSpark-outHigh",
+        "source": "dropTension",
+        "sourceHandle": "envelope",
+        "target": "leadSpark",
+        "targetHandle": "outHigh",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-air-sparkDrive-a",
+        "source": "audio",
+        "sourceHandle": "air",
+        "target": "sparkDrive",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-leadSpark-result-sparkDrive-b",
+        "source": "leadSpark",
+        "sourceHandle": "result",
+        "target": "sparkDrive",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkDrive-result-sparkGate-signal",
+        "source": "sparkDrive",
+        "sourceHandle": "result",
+        "target": "sparkGate",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-time-time-sparkSeed-signal",
+        "source": "time",
+        "sourceHandle": "time",
+        "target": "sparkSeed",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkGate-gate-sparkSeed-trigger",
+        "source": "sparkGate",
+        "sourceHandle": "gate",
+        "target": "sparkSeed",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkGate-gate-sparkFlash-gate",
+        "source": "sparkGate",
+        "sourceHandle": "gate",
+        "target": "sparkFlash",
+        "targetHandle": "gate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-mirror-uv-radius-a",
+        "source": "mirror",
+        "sourceHandle": "uv",
+        "target": "radius",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-radius-value-segments-position",
+        "source": "radius",
+        "sourceHandle": "value",
+        "target": "segments",
+        "targetHandle": "position",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-segments-local-segmentGaps-value",
+        "source": "segments",
+        "sourceHandle": "local",
+        "target": "segmentGaps",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-radius-value-barMask-value",
+        "source": "radius",
+        "sourceHandle": "value",
+        "target": "barMask",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barLength-result-barMask-threshold",
+        "source": "barLength",
+        "sourceHandle": "result",
+        "target": "barMask",
+        "targetHandle": "threshold",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-highEnv-envelope-heat-a",
+        "source": "highEnv",
+        "sourceHandle": "envelope",
+        "target": "heat",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-radius-value-heat-c",
+        "source": "radius",
+        "sourceHandle": "value",
+        "target": "heat",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-meteorHead-result-meteorTailEnd-a",
+        "source": "meteorHead",
+        "sourceHandle": "result",
+        "target": "meteorTailEnd",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-radius-value-meteorMask-value",
+        "source": "radius",
+        "sourceHandle": "value",
+        "target": "meteorMask",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-meteorTailEnd-result-meteorMask-from",
+        "source": "meteorTailEnd",
+        "sourceHandle": "result",
+        "target": "meteorMask",
+        "targetHandle": "from",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-meteorHead-result-meteorMask-to",
+        "source": "meteorHead",
+        "sourceHandle": "result",
+        "target": "meteorMask",
+        "targetHandle": "to",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-peakGravity-value-peakEdge-a",
+        "source": "peakGravity",
+        "sourceHandle": "value",
+        "target": "peakEdge",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-radius-value-peakDot-value",
+        "source": "radius",
+        "sourceHandle": "value",
+        "target": "peakDot",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-peakGravity-value-peakDot-from",
+        "source": "peakGravity",
+        "sourceHandle": "value",
+        "target": "peakDot",
+        "targetHandle": "from",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-peakEdge-result-peakDot-to",
+        "source": "peakEdge",
+        "sourceHandle": "result",
+        "target": "peakDot",
+        "targetHandle": "to",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ledLayout-index-sparkCoords-x",
+        "source": "ledLayout",
+        "sourceHandle": "index",
+        "target": "sparkCoords",
+        "targetHandle": "x",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkSeed-value-sparkCoords-y",
+        "source": "sparkSeed",
+        "sourceHandle": "value",
+        "target": "sparkCoords",
+        "targetHandle": "y",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkCoords-vector-sparkNoise-vector",
+        "source": "sparkCoords",
+        "sourceHandle": "vector",
+        "target": "sparkNoise",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkNoise-fac-sparkPick-value",
+        "source": "sparkNoise",
+        "sourceHandle": "fac",
+        "target": "sparkPick",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barBallistics-envelope-barGlow-value",
+        "source": "barBallistics",
+        "sourceHandle": "envelope",
+        "target": "barGlow",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-heat-result-barRamp-fac",
+        "source": "heat",
+        "sourceHandle": "result",
+        "target": "barRamp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barRamp-color-barShade-a",
+        "source": "barRamp",
+        "sourceHandle": "color",
+        "target": "barShade",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barGlow-result-barShade-b",
+        "source": "barGlow",
+        "sourceHandle": "result",
+        "target": "barShade",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkFlash-envelope-sparkLayer-opacity",
+        "source": "sparkFlash",
+        "sourceHandle": "envelope",
+        "target": "sparkLayer",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkPick-mask-sparkLayer-mask",
+        "source": "sparkPick",
+        "sourceHandle": "mask",
+        "target": "sparkLayer",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-meteorLayer-color-barLayer-base",
+        "source": "meteorLayer",
+        "sourceHandle": "color",
+        "target": "barLayer",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barShade-result-barLayer-layer",
+        "source": "barShade",
+        "sourceHandle": "result",
+        "target": "barLayer",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-segmentGaps-mask-barLayer-opacity",
+        "source": "segmentGaps",
+        "sourceHandle": "mask",
+        "target": "barLayer",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barMask-mask-barLayer-mask",
+        "source": "barMask",
+        "sourceHandle": "mask",
+        "target": "barLayer",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkLayer-color-meteorLayer-base",
+        "source": "sparkLayer",
+        "sourceHandle": "color",
+        "target": "meteorLayer",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-meteorGlow-envelope-meteorLayer-opacity",
+        "source": "meteorGlow",
+        "sourceHandle": "envelope",
+        "target": "meteorLayer",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-meteorMask-mask-meteorLayer-mask",
+        "source": "meteorMask",
+        "sourceHandle": "mask",
+        "target": "meteorLayer",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barLayer-color-peakLayer-base",
+        "source": "barLayer",
+        "sourceHandle": "color",
+        "target": "peakLayer",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-peakDot-mask-peakLayer-mask",
+        "source": "peakDot",
+        "sourceHandle": "mask",
+        "target": "peakLayer",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hueShift-value-hueRotate-hue",
+        "source": "hueShift",
+        "sourceHandle": "value",
+        "target": "hueRotate",
+        "targetHandle": "hue",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-peakLayer-color-hueRotate-color",
+        "source": "peakLayer",
+        "sourceHandle": "color",
+        "target": "hueRotate",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hueRotate-color-trails-color",
+        "source": "hueRotate",
+        "sourceHandle": "color",
+        "target": "trails",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-tailLength-value-trails-decay",
+        "source": "tailLength",
+        "sourceHandle": "value",
+        "target": "trails",
+        "targetHandle": "decay",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-trails-color-out-color",
+        "source": "trails",
+        "sourceHandle": "color",
+        "target": "out",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      }
+    ]
+  }
+}

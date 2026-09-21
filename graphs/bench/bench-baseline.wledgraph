@@ -1,0 +1,46 @@
+{
+  "app": "wledtoy",
+  "formatVersion": 1,
+  "graph": {
+    "version": 3,
+    "nodes": [
+      {
+        "id": "uv",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "data": {
+          "kind": "uv",
+          "values": {}
+        }
+      },
+      {
+        "id": "out",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 0
+        },
+        "data": {
+          "kind": "output",
+          "values": {}
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-uv-x-out-color",
+        "source": "uv",
+        "sourceHandle": "x",
+        "target": "out",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      }
+    ]
+  }
+}

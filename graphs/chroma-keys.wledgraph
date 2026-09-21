@@ -1,0 +1,1523 @@
+{
+  "app": "wledtoy",
+  "formatVersion": 1,
+  "graph": {
+    "version": 3,
+    "nodes": [
+      {
+        "id": "song",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "data": {
+          "kind": "audioSource",
+          "values": {}
+        }
+      },
+      {
+        "id": "uv",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 300
+        },
+        "data": {
+          "kind": "uv",
+          "values": {}
+        }
+      },
+      {
+        "id": "spinKnob",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 520
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Spin",
+            "value": 0.2,
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "twistKnob",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 760
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Twist",
+            "value": 0.65,
+            "min": 0,
+            "max": 1.5
+          }
+        }
+      },
+      {
+        "id": "scopeKnob",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1000
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Scope",
+            "value": 0.65,
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "hueKnob",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1240
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Key Color",
+            "value": 0,
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "pitchFft",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 0
+        },
+        "data": {
+          "kind": "fft",
+          "values": {
+            "windowSize": "8192",
+            "hop": "512",
+            "fmin": 400,
+            "fmax": 3000
+          }
+        }
+      },
+      {
+        "id": "audio",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 300
+        },
+        "data": {
+          "kind": "audio",
+          "values": {}
+        }
+      },
+      {
+        "id": "loudness",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 760
+        },
+        "data": {
+          "kind": "audioSignal",
+          "values": {
+            "mode": "level",
+            "attack": 0.05,
+            "release": 0.8
+          }
+        }
+      },
+      {
+        "id": "wheel",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 1000
+        },
+        "data": {
+          "kind": "polar",
+          "values": {}
+        }
+      },
+      {
+        "id": "scope",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 1240
+        },
+        "data": {
+          "kind": "waveform",
+          "values": {
+            "span": 0.004
+          }
+        }
+      },
+      {
+        "id": "kickEnvelope",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 0
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0,
+            "release": 0.18
+          }
+        }
+      },
+      {
+        "id": "kickPump",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 960
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": 0.18
+          }
+        }
+      },
+      {
+        "id": "kickBulge",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 300
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": -0.1,
+            "c": 1
+          }
+        }
+      },
+      {
+        "id": "sparkleDensity",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 600
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.1,
+            "inHigh": 0.6,
+            "outLow": 0,
+            "outHigh": 0.6
+          }
+        }
+      },
+      {
+        "id": "spinRate",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 900
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "c": 0.02
+          }
+        }
+      },
+      {
+        "id": "peakFloor",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 1140
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "maximum",
+            "b": 0.03
+          }
+        }
+      },
+      {
+        "id": "scopeOpacity",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 1340
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.02,
+            "inHigh": 0.2,
+            "outLow": 0
+          }
+        }
+      },
+      {
+        "id": "glowGain",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 1640
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.25,
+            "inHigh": 0.7,
+            "outLow": 0.68,
+            "outHigh": 0.82
+          }
+        }
+      },
+      {
+        "id": "spinPhase",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 0
+        },
+        "data": {
+          "kind": "integrator",
+          "values": {}
+        }
+      },
+      {
+        "id": "pumpedRadius",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 240
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply"
+          }
+        }
+      },
+      {
+        "id": "twistedRadius",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 480
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply"
+          }
+        }
+      },
+      {
+        "id": "scopeAmplitude",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 480
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "divide",
+            "a": 0.35
+          }
+        }
+      },
+      {
+        "id": "scopeHeight",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 720
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "c": 0.5
+          }
+        }
+      },
+      {
+        "id": "pinwheelAngle",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": 2
+          }
+        }
+      },
+      {
+        "id": "scopeOffset",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 240
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "subtract"
+          }
+        }
+      },
+      {
+        "id": "spunAngle",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add"
+          }
+        }
+      },
+      {
+        "id": "scopeDistance",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 240
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "absolute"
+          }
+        }
+      },
+      {
+        "id": "fifthsPosition",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "fraction"
+          }
+        }
+      },
+      {
+        "id": "scopeLine",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 240
+        },
+        "data": {
+          "kind": "mask",
+          "values": {
+            "invert": true,
+            "threshold": 0.03,
+            "softness": 0.03
+          }
+        }
+      },
+      {
+        "id": "noteSlot",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "snap",
+            "b": 0.08333333333333333
+          }
+        }
+      },
+      {
+        "id": "slotBlend",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 240
+        },
+        "data": {
+          "kind": "wave",
+          "values": {
+            "shape": "saw",
+            "frequency": 12
+          }
+        }
+      },
+      {
+        "id": "scriabinWheel",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 520
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "linear",
+              "stops": [
+                {
+                  "position": 0.0,
+                  "color": [
+                    1,
+                    0.04,
+                    0
+                  ]
+                },
+                {
+                  "position": 0.0833,
+                  "color": [
+                    1,
+                    0.25,
+                    0
+                  ]
+                },
+                {
+                  "position": 0.1667,
+                  "color": [
+                    1,
+                    0.7,
+                    0
+                  ]
+                },
+                {
+                  "position": 0.25,
+                  "color": [
+                    0.15,
+                    1,
+                    0
+                  ]
+                },
+                {
+                  "position": 0.3333,
+                  "color": [
+                    0,
+                    1,
+                    0.55
+                  ]
+                },
+                {
+                  "position": 0.4167,
+                  "color": [
+                    0,
+                    0.45,
+                    1
+                  ]
+                },
+                {
+                  "position": 0.5,
+                  "color": [
+                    0.05,
+                    0.1,
+                    1
+                  ]
+                },
+                {
+                  "position": 0.5833,
+                  "color": [
+                    0.4,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "position": 0.6667,
+                  "color": [
+                    0.7,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "position": 0.75,
+                  "color": [
+                    1,
+                    0,
+                    0.85
+                  ]
+                },
+                {
+                  "position": 0.8333,
+                  "color": [
+                    1,
+                    0,
+                    0.5
+                  ]
+                },
+                {
+                  "position": 0.9167,
+                  "color": [
+                    1,
+                    0,
+                    0.18
+                  ]
+                },
+                {
+                  "position": 1.0,
+                  "color": [
+                    1,
+                    0.04,
+                    0
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "hatSparkle",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 760
+        },
+        "data": {
+          "kind": "sparkle",
+          "values": {
+            "speed": 12
+          }
+        }
+      },
+      {
+        "id": "thisNoteStep",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": 7,
+            "c": 0.041666666666666664
+          }
+        }
+      },
+      {
+        "id": "thisNotePosition",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "fraction"
+          }
+        }
+      },
+      {
+        "id": "thisNoteLevel",
+        "type": "shader",
+        "position": {
+          "x": 3000,
+          "y": 0
+        },
+        "data": {
+          "kind": "chroma",
+          "values": {}
+        }
+      },
+      {
+        "id": "nextFifthStep",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 240
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": 7,
+            "c": 0.625
+          }
+        }
+      },
+      {
+        "id": "nextFifthPosition",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 240
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "fraction"
+          }
+        }
+      },
+      {
+        "id": "nextFifthLevel",
+        "type": "shader",
+        "position": {
+          "x": 3000,
+          "y": 240
+        },
+        "data": {
+          "kind": "chroma",
+          "values": {}
+        }
+      },
+      {
+        "id": "glintDesaturate",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 480
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": -0.85,
+            "c": 1
+          }
+        }
+      },
+      {
+        "id": "noteGlow",
+        "type": "shader",
+        "position": {
+          "x": 3300,
+          "y": 0
+        },
+        "data": {
+          "kind": "mix",
+          "values": {}
+        }
+      },
+      {
+        "id": "glowContrast",
+        "type": "shader",
+        "position": {
+          "x": 3600,
+          "y": 0
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.27,
+            "inHigh": 0.62,
+            "outLow": 0,
+            "outHigh": 0.8
+          }
+        }
+      },
+      {
+        "id": "harmonyColor",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 0
+        },
+        "data": {
+          "kind": "hueSaturation",
+          "values": {}
+        }
+      },
+      {
+        "id": "scopeTint",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 300
+        },
+        "data": {
+          "kind": "color",
+          "values": {
+            "color": [
+              0.06,
+              0.12,
+              0.2
+            ]
+          }
+        }
+      },
+      {
+        "id": "scopeColor",
+        "type": "shader",
+        "position": {
+          "x": 4200,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": 1.6
+          }
+        }
+      },
+      {
+        "id": "scopeOverHarmony",
+        "type": "shader",
+        "position": {
+          "x": 4500,
+          "y": 0
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "add"
+          }
+        }
+      },
+      {
+        "id": "noteAfterglow",
+        "type": "shader",
+        "position": {
+          "x": 4800,
+          "y": 0
+        },
+        "data": {
+          "kind": "trails",
+          "values": {
+            "decay": 0.3
+          }
+        }
+      },
+      {
+        "id": "out",
+        "type": "shader",
+        "position": {
+          "x": 5100,
+          "y": 0
+        },
+        "data": {
+          "kind": "output",
+          "values": {
+            "gamma": 2.2,
+            "ceiling": 0.9,
+            "dithering": "temporal"
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-noteSlot-result-thisNoteStep-a",
+        "source": "noteSlot",
+        "sourceHandle": "result",
+        "target": "thisNoteStep",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-thisNoteStep-result-thisNotePosition-a",
+        "source": "thisNoteStep",
+        "sourceHandle": "result",
+        "target": "thisNotePosition",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-thisNotePosition-result-thisNoteLevel-position",
+        "source": "thisNotePosition",
+        "sourceHandle": "result",
+        "target": "thisNoteLevel",
+        "targetHandle": "position",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-pitchFft-spectrum-thisNoteLevel-spectrum",
+        "source": "pitchFft",
+        "sourceHandle": "spectrum",
+        "target": "thisNoteLevel",
+        "targetHandle": "spectrum",
+        "style": {
+          "stroke": "#d9568b",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-noteSlot-result-nextFifthStep-a",
+        "source": "noteSlot",
+        "sourceHandle": "result",
+        "target": "nextFifthStep",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-nextFifthStep-result-nextFifthPosition-a",
+        "source": "nextFifthStep",
+        "sourceHandle": "result",
+        "target": "nextFifthPosition",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-nextFifthPosition-result-nextFifthLevel-position",
+        "source": "nextFifthPosition",
+        "sourceHandle": "result",
+        "target": "nextFifthLevel",
+        "targetHandle": "position",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-pitchFft-spectrum-nextFifthLevel-spectrum",
+        "source": "pitchFft",
+        "sourceHandle": "spectrum",
+        "target": "nextFifthLevel",
+        "targetHandle": "spectrum",
+        "style": {
+          "stroke": "#d9568b",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-song-audio-pitchFft-audio",
+        "source": "song",
+        "sourceHandle": "audio",
+        "target": "pitchFft",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-song-audio-audio-audio",
+        "source": "song",
+        "sourceHandle": "audio",
+        "target": "audio",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-song-audio-scope-audio",
+        "source": "song",
+        "sourceHandle": "audio",
+        "target": "scope",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-kick-kickEnvelope-signal",
+        "source": "audio",
+        "sourceHandle": "kick",
+        "target": "kickEnvelope",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickEnvelope-envelope-kickPump-a",
+        "source": "kickEnvelope",
+        "sourceHandle": "envelope",
+        "target": "kickPump",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickEnvelope-envelope-kickBulge-a",
+        "source": "kickEnvelope",
+        "sourceHandle": "envelope",
+        "target": "kickBulge",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-air-sparkleDensity-value",
+        "source": "audio",
+        "sourceHandle": "air",
+        "target": "sparkleDensity",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-peak-peakFloor-a",
+        "source": "audio",
+        "sourceHandle": "peak",
+        "target": "peakFloor",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-song-audio-loudness-audio",
+        "source": "song",
+        "sourceHandle": "audio",
+        "target": "loudness",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-loudness-signal-glowGain-value",
+        "source": "loudness",
+        "sourceHandle": "signal",
+        "target": "glowGain",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-glowGain-result-kickPump-c",
+        "source": "glowGain",
+        "sourceHandle": "result",
+        "target": "kickPump",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickPump-result-glowContrast-outHigh",
+        "source": "kickPump",
+        "sourceHandle": "result",
+        "target": "glowContrast",
+        "targetHandle": "outHigh",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-loudness-signal-spinRate-a",
+        "source": "loudness",
+        "sourceHandle": "signal",
+        "target": "spinRate",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-spinKnob-value-spinRate-b",
+        "source": "spinKnob",
+        "sourceHandle": "value",
+        "target": "spinRate",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-spinRate-result-spinPhase-rate",
+        "source": "spinRate",
+        "sourceHandle": "result",
+        "target": "spinPhase",
+        "targetHandle": "rate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-loudness-signal-scopeOpacity-value",
+        "source": "loudness",
+        "sourceHandle": "signal",
+        "target": "scopeOpacity",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scopeKnob-value-scopeOpacity-outHigh",
+        "source": "scopeKnob",
+        "sourceHandle": "value",
+        "target": "scopeOpacity",
+        "targetHandle": "outHigh",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-wheel-radius-pumpedRadius-a",
+        "source": "wheel",
+        "sourceHandle": "radius",
+        "target": "pumpedRadius",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickBulge-result-pumpedRadius-b",
+        "source": "kickBulge",
+        "sourceHandle": "result",
+        "target": "pumpedRadius",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-pumpedRadius-result-twistedRadius-a",
+        "source": "pumpedRadius",
+        "sourceHandle": "result",
+        "target": "twistedRadius",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-twistKnob-value-twistedRadius-b",
+        "source": "twistKnob",
+        "sourceHandle": "value",
+        "target": "twistedRadius",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-wheel-angle-pinwheelAngle-a",
+        "source": "wheel",
+        "sourceHandle": "angle",
+        "target": "pinwheelAngle",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-twistedRadius-result-pinwheelAngle-c",
+        "source": "twistedRadius",
+        "sourceHandle": "result",
+        "target": "pinwheelAngle",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-pinwheelAngle-result-spunAngle-a",
+        "source": "pinwheelAngle",
+        "sourceHandle": "result",
+        "target": "spunAngle",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-spinPhase-value-spunAngle-b",
+        "source": "spinPhase",
+        "sourceHandle": "value",
+        "target": "spunAngle",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-spunAngle-result-fifthsPosition-a",
+        "source": "spunAngle",
+        "sourceHandle": "result",
+        "target": "fifthsPosition",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-peakFloor-result-scopeAmplitude-b",
+        "source": "peakFloor",
+        "sourceHandle": "result",
+        "target": "scopeAmplitude",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scope-sample-scopeHeight-a",
+        "source": "scope",
+        "sourceHandle": "sample",
+        "target": "scopeHeight",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scopeAmplitude-result-scopeHeight-b",
+        "source": "scopeAmplitude",
+        "sourceHandle": "result",
+        "target": "scopeHeight",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-uv-y-scopeOffset-a",
+        "source": "uv",
+        "sourceHandle": "y",
+        "target": "scopeOffset",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scopeHeight-result-scopeOffset-b",
+        "source": "scopeHeight",
+        "sourceHandle": "result",
+        "target": "scopeOffset",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scopeOffset-result-scopeDistance-a",
+        "source": "scopeOffset",
+        "sourceHandle": "result",
+        "target": "scopeDistance",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scopeDistance-result-scopeLine-value",
+        "source": "scopeDistance",
+        "sourceHandle": "result",
+        "target": "scopeLine",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-fifthsPosition-result-noteSlot-a",
+        "source": "fifthsPosition",
+        "sourceHandle": "result",
+        "target": "noteSlot",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-fifthsPosition-result-slotBlend-input",
+        "source": "fifthsPosition",
+        "sourceHandle": "result",
+        "target": "slotBlend",
+        "targetHandle": "input",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-fifthsPosition-result-scriabinWheel-fac",
+        "source": "fifthsPosition",
+        "sourceHandle": "result",
+        "target": "scriabinWheel",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-slotBlend-value-noteGlow-factor",
+        "source": "slotBlend",
+        "sourceHandle": "value",
+        "target": "noteGlow",
+        "targetHandle": "factor",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-thisNoteLevel-level-noteGlow-a",
+        "source": "thisNoteLevel",
+        "sourceHandle": "level",
+        "target": "noteGlow",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-nextFifthLevel-level-noteGlow-b",
+        "source": "nextFifthLevel",
+        "sourceHandle": "level",
+        "target": "noteGlow",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-noteGlow-result-glowContrast-value",
+        "source": "noteGlow",
+        "sourceHandle": "result",
+        "target": "glowContrast",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkleDensity-result-hatSparkle-density",
+        "source": "sparkleDensity",
+        "sourceHandle": "result",
+        "target": "hatSparkle",
+        "targetHandle": "density",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hatSparkle-out-glintDesaturate-a",
+        "source": "hatSparkle",
+        "sourceHandle": "out",
+        "target": "glintDesaturate",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hueKnob-value-harmonyColor-hue",
+        "source": "hueKnob",
+        "sourceHandle": "value",
+        "target": "harmonyColor",
+        "targetHandle": "hue",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-glintDesaturate-result-harmonyColor-saturation",
+        "source": "glintDesaturate",
+        "sourceHandle": "result",
+        "target": "harmonyColor",
+        "targetHandle": "saturation",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-glowContrast-result-harmonyColor-value",
+        "source": "glowContrast",
+        "sourceHandle": "result",
+        "target": "harmonyColor",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scriabinWheel-color-harmonyColor-color",
+        "source": "scriabinWheel",
+        "sourceHandle": "color",
+        "target": "harmonyColor",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-harmonyColor-color-scopeColor-a",
+        "source": "harmonyColor",
+        "sourceHandle": "color",
+        "target": "scopeColor",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scopeTint-color-scopeColor-c",
+        "source": "scopeTint",
+        "sourceHandle": "color",
+        "target": "scopeColor",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-harmonyColor-color-scopeOverHarmony-base",
+        "source": "harmonyColor",
+        "sourceHandle": "color",
+        "target": "scopeOverHarmony",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scopeColor-result-scopeOverHarmony-layer",
+        "source": "scopeColor",
+        "sourceHandle": "result",
+        "target": "scopeOverHarmony",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scopeOpacity-result-scopeOverHarmony-opacity",
+        "source": "scopeOpacity",
+        "sourceHandle": "result",
+        "target": "scopeOverHarmony",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scopeLine-mask-scopeOverHarmony-mask",
+        "source": "scopeLine",
+        "sourceHandle": "mask",
+        "target": "scopeOverHarmony",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scopeOverHarmony-color-noteAfterglow-color",
+        "source": "scopeOverHarmony",
+        "sourceHandle": "color",
+        "target": "noteAfterglow",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-noteAfterglow-color-out-color",
+        "source": "noteAfterglow",
+        "sourceHandle": "color",
+        "target": "out",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      }
+    ]
+  }
+}

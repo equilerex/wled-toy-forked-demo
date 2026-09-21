@@ -1,0 +1,1769 @@
+{
+  "app": "wledtoy",
+  "formatVersion": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "song",
+        "type": "shader",
+        "position": {
+          "x": -450.02727460542303,
+          "y": 309.08928155057055
+        },
+        "data": {
+          "kind": "audioSource",
+          "values": {
+            "agcRelease": 8,
+            "gateDb": -55
+          }
+        }
+      },
+      {
+        "id": "audio",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 234
+        },
+        "data": {
+          "kind": "audio",
+          "values": {}
+        }
+      },
+      {
+        "id": "fastFft",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 688
+        },
+        "data": {
+          "kind": "fft",
+          "values": {
+            "windowSize": "512",
+            "hop": "256"
+          }
+        }
+      },
+      {
+        "id": "afterglow",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1022.4423905440171
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Afterglow (s)",
+            "value": 0.15,
+            "min": 0.02,
+            "max": 0.8
+          }
+        }
+      },
+      {
+        "id": "paletteShift",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1196.8141301813391
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Palette Shift",
+            "value": 0,
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "rigFloor",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1390
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Drop Rig Floor",
+            "value": 0.5,
+            "min": 0,
+            "max": 0.8
+          }
+        }
+      },
+      {
+        "id": "kickBand",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 0
+        },
+        "data": {
+          "kind": "bandSplit",
+          "values": {
+            "low": 40,
+            "high": 130
+          }
+        }
+      },
+      {
+        "id": "snareBand",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 168
+        },
+        "data": {
+          "kind": "bandSplit",
+          "values": {
+            "low": 2500,
+            "high": 4500
+          }
+        }
+      },
+      {
+        "id": "hatBand",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 336
+        },
+        "data": {
+          "kind": "bandSplit",
+          "values": {
+            "low": 9000,
+            "high": 16000
+          }
+        }
+      },
+      {
+        "id": "beatGate",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 504
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "lessThan",
+            "b": 0.5
+          }
+        }
+      },
+      {
+        "id": "padSoft",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 716
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.1,
+            "inHigh": 0.3,
+            "outLow": 0.7,
+            "outHigh": 1
+          }
+        }
+      },
+      {
+        "id": "kickTrigger",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 0
+        },
+        "data": {
+          "kind": "schmittTrigger",
+          "values": {
+            "low": 0.5,
+            "high": 0.8
+          }
+        }
+      },
+      {
+        "id": "drumsOn",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 168
+        },
+        "data": {
+          "kind": "peakHold",
+          "values": {
+            "hold": 0.6,
+            "decay": 0.15
+          }
+        }
+      },
+      {
+        "id": "snareTrigger",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 336
+        },
+        "data": {
+          "kind": "schmittTrigger",
+          "values": {
+            "low": 0.13,
+            "high": 0.24
+          }
+        }
+      },
+      {
+        "id": "hatOnly",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 504
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "clamp": true,
+            "b": -1.1
+          }
+        }
+      },
+      {
+        "id": "eighthGate",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 716
+        },
+        "data": {
+          "kind": "wave",
+          "values": {
+            "shape": "square",
+            "frequency": 2,
+            "duty": 0.5
+          }
+        }
+      },
+      {
+        "id": "barClock",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 928
+        },
+        "data": {
+          "kind": "clockDivider",
+          "values": {
+            "divide": 4
+          }
+        }
+      },
+      {
+        "id": "kickPunch",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 0
+        },
+        "data": {
+          "kind": "envelope",
+          "values": {
+            "mode": "ad",
+            "attack": 0.01,
+            "decay": 0.45
+          }
+        }
+      },
+      {
+        "id": "snareFlash",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 234
+        },
+        "data": {
+          "kind": "envelope",
+          "values": {
+            "mode": "ad",
+            "attack": 0.01,
+            "decay": 0.25
+          }
+        }
+      },
+      {
+        "id": "snareSide",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 468
+        },
+        "data": {
+          "kind": "toggle",
+          "values": {}
+        }
+      },
+      {
+        "id": "hatDensity",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 592
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.25,
+            "release": 0.6
+          }
+        }
+      },
+      {
+        "id": "blockCountSeq",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 760
+        },
+        "data": {
+          "kind": "stepSequencer",
+          "values": {
+            "steps": "8 4 2 4"
+          }
+        }
+      },
+      {
+        "id": "mirrorSeq",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 950
+        },
+        "data": {
+          "kind": "stepSequencer",
+          "values": {
+            "steps": "0.5 0.5 0 0"
+          }
+        }
+      },
+      {
+        "id": "angleSeq",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 1140
+        },
+        "data": {
+          "kind": "stepSequencer",
+          "values": {
+            "steps": "0 0 0.125 0.5"
+          }
+        }
+      },
+      {
+        "id": "dropGate",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 0
+        },
+        "data": {
+          "kind": "schmittTrigger",
+          "values": {
+            "low": 0.038,
+            "high": 0.05
+          }
+        }
+      },
+      {
+        "id": "dropAmount",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 168
+        },
+        "data": {
+          "kind": "slewLimiter",
+          "values": {
+            "rise": 4,
+            "fall": 2
+          }
+        }
+      },
+      {
+        "id": "stepClock",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 336
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "mode": "switch"
+          }
+        }
+      },
+      {
+        "id": "stepCounter",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 548
+        },
+        "data": {
+          "kind": "counter",
+          "values": {
+            "steps": 8
+          }
+        }
+      },
+      {
+        "id": "mirrorGlide",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 738
+        },
+        "data": {
+          "kind": "slewLimiter",
+          "values": {
+            "rise": 2,
+            "fall": 2
+          }
+        }
+      },
+      {
+        "id": "stepPunch",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 0
+        },
+        "data": {
+          "kind": "envelope",
+          "values": {
+            "mode": "ad",
+            "attack": 0.1,
+            "decay": 0.4
+          }
+        }
+      },
+      {
+        "id": "stepDrive",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 234
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply"
+          }
+        }
+      },
+      {
+        "id": "blockDrive",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 446
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "maximum"
+          }
+        }
+      },
+      {
+        "id": "stepInBar",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 658
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "modulo"
+          }
+        }
+      },
+      {
+        "id": "litWidth",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 870
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0,
+            "inHigh": 1,
+            "outLow": 1.5,
+            "outHigh": 0.5
+          }
+        }
+      },
+      {
+        "id": "floorDuck",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 1104
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "subtract",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "dropFloor",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 1316
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply"
+          }
+        }
+      },
+      {
+        "id": "floorDrive",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 1528
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply"
+          }
+        }
+      },
+      {
+        "id": "dropHue",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": 0.185
+          }
+        }
+      },
+      {
+        "id": "heatShift",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 212
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": 0.2
+          }
+        }
+      },
+      {
+        "id": "rigRotate",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 424
+        },
+        "data": {
+          "kind": "rotate",
+          "values": {}
+        }
+      },
+      {
+        "id": "panels",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 614
+        },
+        "data": {
+          "kind": "tile",
+          "values": {
+            "count": [
+              8,
+              3
+            ]
+          }
+        }
+      },
+      {
+        "id": "hatGlitter",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 826
+        },
+        "data": {
+          "kind": "sparkle",
+          "values": {
+            "density": 0.15,
+            "speed": 6
+          }
+        }
+      },
+      {
+        "id": "rigMirror",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 0
+        },
+        "data": {
+          "kind": "mirror",
+          "values": {
+            "axis": "x",
+            "mode": "fromCenter"
+          }
+        }
+      },
+      {
+        "id": "panelIndex",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 212
+        },
+        "data": {
+          "kind": "vectorMath",
+          "values": {
+            "op": "dot",
+            "b": [
+              1,
+              1,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "id": "hatGain",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 512
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "clamp": true,
+            "b": 5
+          }
+        }
+      },
+      {
+        "id": "blocks",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 0
+        },
+        "data": {
+          "kind": "segmentSplit",
+          "values": {}
+        }
+      },
+      {
+        "id": "panelPhase",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 190
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add"
+          }
+        }
+      },
+      {
+        "id": "blockLit",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "compare"
+          }
+        }
+      },
+      {
+        "id": "blockShape",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 212
+        },
+        "data": {
+          "kind": "rangeSelect",
+          "values": {
+            "from": 0.06,
+            "to": 0.94,
+            "softness": 0.08
+          }
+        }
+      },
+      {
+        "id": "blockRamp",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 424
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "linear",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0,
+                    0.75,
+                    1
+                  ]
+                },
+                {
+                  "position": 0.5,
+                  "color": [
+                    0,
+                    0.3,
+                    1
+                  ]
+                },
+                {
+                  "position": 1,
+                  "color": [
+                    0.3,
+                    0.05,
+                    1
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "panelSelect",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 570
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "pingPong",
+            "b": 1
+          }
+        }
+      },
+      {
+        "id": "blockLevel",
+        "type": "shader",
+        "position": {
+          "x": 3000,
+          "y": 0
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "mode": "mix"
+          }
+        }
+      },
+      {
+        "id": "blockHue",
+        "type": "shader",
+        "position": {
+          "x": 3000,
+          "y": 212
+        },
+        "data": {
+          "kind": "hueSaturation",
+          "values": {
+            "saturation": 1,
+            "value": 1
+          }
+        }
+      },
+      {
+        "id": "snareLayer",
+        "type": "shader",
+        "position": {
+          "x": 3300,
+          "y": 0
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "mix",
+            "base": [
+              0,
+              0,
+              0
+            ],
+            "layer": [
+              0.02,
+              0.7,
+              0.85
+            ]
+          }
+        }
+      },
+      {
+        "id": "blockLayer",
+        "type": "shader",
+        "position": {
+          "x": 3600,
+          "y": 0
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "mix"
+          }
+        }
+      },
+      {
+        "id": "hatLayer",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 0
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "add"
+          }
+        }
+      },
+      {
+        "id": "trails",
+        "type": "shader",
+        "position": {
+          "x": 4200,
+          "y": 0
+        },
+        "data": {
+          "kind": "trails",
+          "values": {}
+        }
+      },
+      {
+        "id": "out",
+        "type": "shader",
+        "position": {
+          "x": 4500,
+          "y": 0
+        },
+        "data": {
+          "kind": "output",
+          "values": {
+            "gamma": 2.2,
+            "ceiling": 0.9,
+            "dithering": "temporal"
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-song-audio-audio-audio",
+        "source": "song",
+        "target": "audio",
+        "sourceHandle": "audio",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-song-audio-fastFft-audio",
+        "source": "song",
+        "target": "fastFft",
+        "sourceHandle": "audio",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-fastFft-spectrum-snareBand-spectrum",
+        "source": "fastFft",
+        "target": "snareBand",
+        "sourceHandle": "spectrum",
+        "targetHandle": "spectrum",
+        "style": {
+          "stroke": "#d9568b",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-fastFft-spectrum-hatBand-spectrum",
+        "source": "fastFft",
+        "target": "hatBand",
+        "sourceHandle": "spectrum",
+        "targetHandle": "spectrum",
+        "style": {
+          "stroke": "#d9568b",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickBand-level-kickTrigger-signal",
+        "source": "kickBand",
+        "target": "kickTrigger",
+        "sourceHandle": "level",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickBand-level-drumsOn-signal",
+        "source": "kickBand",
+        "target": "drumsOn",
+        "sourceHandle": "level",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickTrigger-gate-kickPunch-gate",
+        "source": "kickTrigger",
+        "target": "kickPunch",
+        "sourceHandle": "gate",
+        "targetHandle": "gate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareBand-level-snareTrigger-signal",
+        "source": "snareBand",
+        "target": "snareTrigger",
+        "sourceHandle": "level",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareTrigger-gate-snareFlash-gate",
+        "source": "snareTrigger",
+        "target": "snareFlash",
+        "sourceHandle": "gate",
+        "targetHandle": "gate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareTrigger-gate-snareSide-trigger",
+        "source": "snareTrigger",
+        "target": "snareSide",
+        "sourceHandle": "gate",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareBand-level-hatOnly-a",
+        "source": "snareBand",
+        "target": "hatOnly",
+        "sourceHandle": "level",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hatBand-level-hatOnly-c",
+        "source": "hatBand",
+        "target": "hatOnly",
+        "sourceHandle": "level",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hatOnly-result-hatDensity-signal",
+        "source": "hatOnly",
+        "target": "hatDensity",
+        "sourceHandle": "result",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hatDensity-envelope-dropGate-signal",
+        "source": "hatDensity",
+        "target": "dropGate",
+        "sourceHandle": "envelope",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropGate-gate-dropAmount-signal",
+        "source": "dropGate",
+        "target": "dropAmount",
+        "sourceHandle": "gate",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-beatPhase-beatGate-a",
+        "source": "audio",
+        "target": "beatGate",
+        "sourceHandle": "beatPhase",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-beatPhase-eighthGate-input",
+        "source": "audio",
+        "target": "eighthGate",
+        "sourceHandle": "beatPhase",
+        "targetHandle": "input",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-beatGate-result-barClock-trigger",
+        "source": "beatGate",
+        "target": "barClock",
+        "sourceHandle": "result",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropAmount-value-stepClock-factor",
+        "source": "dropAmount",
+        "target": "stepClock",
+        "sourceHandle": "value",
+        "targetHandle": "factor",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-beatGate-result-stepClock-a",
+        "source": "beatGate",
+        "target": "stepClock",
+        "sourceHandle": "result",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-eighthGate-value-stepClock-b",
+        "source": "eighthGate",
+        "target": "stepClock",
+        "sourceHandle": "value",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-stepClock-result-stepCounter-trigger",
+        "source": "stepClock",
+        "target": "stepCounter",
+        "sourceHandle": "result",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-stepClock-result-stepPunch-gate",
+        "source": "stepClock",
+        "target": "stepPunch",
+        "sourceHandle": "result",
+        "targetHandle": "gate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barClock-trigger-blockCountSeq-trigger",
+        "source": "barClock",
+        "target": "blockCountSeq",
+        "sourceHandle": "trigger",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barClock-trigger-mirrorSeq-trigger",
+        "source": "barClock",
+        "target": "mirrorSeq",
+        "sourceHandle": "trigger",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-barClock-trigger-angleSeq-trigger",
+        "source": "barClock",
+        "target": "angleSeq",
+        "sourceHandle": "trigger",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-mirrorSeq-value-mirrorGlide-signal",
+        "source": "mirrorSeq",
+        "target": "mirrorGlide",
+        "sourceHandle": "value",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-vocal-padSoft-value",
+        "source": "audio",
+        "target": "padSoft",
+        "sourceHandle": "vocal",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-stepPunch-envelope-stepDrive-a",
+        "source": "stepPunch",
+        "target": "stepDrive",
+        "sourceHandle": "envelope",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-padSoft-result-stepDrive-b",
+        "source": "padSoft",
+        "target": "stepDrive",
+        "sourceHandle": "result",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickPunch-envelope-blockDrive-a",
+        "source": "kickPunch",
+        "target": "blockDrive",
+        "sourceHandle": "envelope",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-stepDrive-result-blockDrive-b",
+        "source": "stepDrive",
+        "target": "blockDrive",
+        "sourceHandle": "result",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-stepCounter-count-stepInBar-a",
+        "source": "stepCounter",
+        "target": "stepInBar",
+        "sourceHandle": "count",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blockCountSeq-value-stepInBar-b",
+        "source": "blockCountSeq",
+        "target": "stepInBar",
+        "sourceHandle": "value",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropAmount-value-dropFloor-a",
+        "source": "dropAmount",
+        "target": "dropFloor",
+        "sourceHandle": "value",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-rigFloor-value-dropFloor-b",
+        "source": "rigFloor",
+        "target": "dropFloor",
+        "sourceHandle": "value",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickPunch-envelope-floorDuck-a",
+        "source": "kickPunch",
+        "target": "floorDuck",
+        "sourceHandle": "envelope",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareFlash-envelope-floorDuck-b",
+        "source": "snareFlash",
+        "target": "floorDuck",
+        "sourceHandle": "envelope",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropFloor-result-floorDrive-a",
+        "source": "dropFloor",
+        "target": "floorDrive",
+        "sourceHandle": "result",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-floorDuck-result-floorDrive-b",
+        "source": "floorDuck",
+        "target": "floorDrive",
+        "sourceHandle": "result",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropAmount-value-dropHue-a",
+        "source": "dropAmount",
+        "target": "dropHue",
+        "sourceHandle": "value",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-paletteShift-value-dropHue-c",
+        "source": "paletteShift",
+        "target": "dropHue",
+        "sourceHandle": "value",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-drumsOn-peak-heatShift-a",
+        "source": "drumsOn",
+        "target": "heatShift",
+        "sourceHandle": "peak",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropHue-result-heatShift-c",
+        "source": "dropHue",
+        "target": "heatShift",
+        "sourceHandle": "result",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-angleSeq-value-rigRotate-angle",
+        "source": "angleSeq",
+        "target": "rigRotate",
+        "sourceHandle": "value",
+        "targetHandle": "angle",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-rigRotate-uv-rigMirror-uv",
+        "source": "rigRotate",
+        "target": "rigMirror",
+        "sourceHandle": "uv",
+        "targetHandle": "uv",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-mirrorGlide-value-rigMirror-center",
+        "source": "mirrorGlide",
+        "target": "rigMirror",
+        "sourceHandle": "value",
+        "targetHandle": "center",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-rigMirror-uv-blocks-position",
+        "source": "rigMirror",
+        "target": "blocks",
+        "sourceHandle": "uv",
+        "targetHandle": "position",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blockCountSeq-value-blocks-count",
+        "source": "blockCountSeq",
+        "target": "blocks",
+        "sourceHandle": "value",
+        "targetHandle": "count",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-drumsOn-peak-litWidth-value",
+        "source": "drumsOn",
+        "target": "litWidth",
+        "sourceHandle": "peak",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-litWidth-result-blockLit-c",
+        "source": "litWidth",
+        "target": "blockLit",
+        "sourceHandle": "result",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blocks-segment-blockLit-a",
+        "source": "blocks",
+        "target": "blockLit",
+        "sourceHandle": "segment",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-stepInBar-result-blockLit-b",
+        "source": "stepInBar",
+        "target": "blockLit",
+        "sourceHandle": "result",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blocks-local-blockShape-value",
+        "source": "blocks",
+        "target": "blockShape",
+        "sourceHandle": "local",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blocks-fraction-blockRamp-fac",
+        "source": "blocks",
+        "target": "blockRamp",
+        "sourceHandle": "fraction",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blockLit-result-blockLevel-factor",
+        "source": "blockLit",
+        "target": "blockLevel",
+        "sourceHandle": "result",
+        "targetHandle": "factor",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-floorDrive-result-blockLevel-a",
+        "source": "floorDrive",
+        "target": "blockLevel",
+        "sourceHandle": "result",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blockDrive-result-blockLevel-b",
+        "source": "blockDrive",
+        "target": "blockLevel",
+        "sourceHandle": "result",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blockRamp-color-blockHue-color",
+        "source": "blockRamp",
+        "target": "blockHue",
+        "sourceHandle": "color",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-heatShift-result-blockHue-hue",
+        "source": "heatShift",
+        "target": "blockHue",
+        "sourceHandle": "result",
+        "targetHandle": "hue",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blockHue-color-blockLayer-layer",
+        "source": "blockHue",
+        "target": "blockLayer",
+        "sourceHandle": "color",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blockLevel-result-blockLayer-opacity",
+        "source": "blockLevel",
+        "target": "blockLayer",
+        "sourceHandle": "result",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blockShape-mask-blockLayer-mask",
+        "source": "blockShape",
+        "target": "blockLayer",
+        "sourceHandle": "mask",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-panels-cell-panelIndex-a",
+        "source": "panels",
+        "target": "panelIndex",
+        "sourceHandle": "cell",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-panelIndex-value-panelPhase-a",
+        "source": "panelIndex",
+        "target": "panelPhase",
+        "sourceHandle": "value",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareSide-state-panelPhase-b",
+        "source": "snareSide",
+        "target": "panelPhase",
+        "sourceHandle": "state",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-panelPhase-result-panelSelect-a",
+        "source": "panelPhase",
+        "target": "panelSelect",
+        "sourceHandle": "result",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareLayer-color-blockLayer-base",
+        "source": "snareLayer",
+        "target": "blockLayer",
+        "sourceHandle": "color",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-snareFlash-envelope-snareLayer-opacity",
+        "source": "snareFlash",
+        "target": "snareLayer",
+        "sourceHandle": "envelope",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-panelSelect-result-snareLayer-mask",
+        "source": "panelSelect",
+        "target": "snareLayer",
+        "sourceHandle": "result",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hatOnly-result-hatGain-a",
+        "source": "hatOnly",
+        "target": "hatGain",
+        "sourceHandle": "result",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blockLayer-color-hatLayer-base",
+        "source": "blockLayer",
+        "target": "hatLayer",
+        "sourceHandle": "color",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hatGain-result-hatLayer-opacity",
+        "source": "hatGain",
+        "target": "hatLayer",
+        "sourceHandle": "result",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hatGlitter-out-hatLayer-mask",
+        "source": "hatGlitter",
+        "target": "hatLayer",
+        "sourceHandle": "out",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blockHue-color-hatLayer-layer",
+        "source": "blockHue",
+        "target": "hatLayer",
+        "sourceHandle": "color",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hatLayer-color-trails-color",
+        "source": "hatLayer",
+        "target": "trails",
+        "sourceHandle": "color",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-afterglow-value-trails-decay",
+        "source": "afterglow",
+        "target": "trails",
+        "sourceHandle": "value",
+        "targetHandle": "decay",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-trails-color-out-color",
+        "source": "trails",
+        "target": "out",
+        "sourceHandle": "color",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      }
+    ],
+    "scenes": [],
+    "version": 3
+  }
+}

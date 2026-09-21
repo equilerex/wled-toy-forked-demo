@@ -1,0 +1,2641 @@
+{
+  "app": "wledtoy",
+  "formatVersion": 1,
+  "graph": {
+    "version": 3,
+    "nodes": [
+      {
+        "id": "time",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "data": {
+          "kind": "time",
+          "values": {}
+        }
+      },
+      {
+        "id": "drift",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 0
+        },
+        "data": {
+          "kind": "combineXYZ",
+          "values": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        }
+      },
+      {
+        "id": "uv",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 0
+        },
+        "data": {
+          "kind": "uv",
+          "values": {}
+        }
+      },
+      {
+        "id": "l0map",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 0
+        },
+        "data": {
+          "kind": "mapping",
+          "values": {
+            "location": [
+              0,
+              0,
+              0
+            ],
+            "rotation": 0,
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "pivot": [
+              0.5,
+              0.5,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "id": "l0noise",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 0
+        },
+        "data": {
+          "kind": "noiseTexture",
+          "values": {
+            "scale": 6,
+            "detail": 15,
+            "roughness": 0.85,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l0voronoi",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 0
+        },
+        "data": {
+          "kind": "voronoi",
+          "values": {
+            "scale": 8,
+            "randomness": 1
+          }
+        }
+      },
+      {
+        "id": "l0magic",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 0
+        },
+        "data": {
+          "kind": "magicTexture",
+          "values": {
+            "depth": 10,
+            "scale": 7,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l0brick",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 0
+        },
+        "data": {
+          "kind": "brickTexture",
+          "values": {
+            "scale": 6,
+            "mortarSize": 0.04,
+            "mortarSmooth": 0.5,
+            "brickWidth": 0.5,
+            "rowHeight": 0.25
+          }
+        }
+      },
+      {
+        "id": "l0wave",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 0
+        },
+        "data": {
+          "kind": "waveTexture",
+          "values": {
+            "type": "rings",
+            "ringsDirection": "spherical",
+            "profile": "triangle",
+            "scale": 9,
+            "distortion": 2,
+            "detail": 15,
+            "detailScale": 2,
+            "detailRoughness": 0.7
+          }
+        }
+      },
+      {
+        "id": "l0ramp",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 460
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "spline",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0,
+                    0,
+                    0.2
+                  ]
+                },
+                {
+                  "position": 0.35,
+                  "color": [
+                    0.8,
+                    0.1,
+                    0.4
+                  ]
+                },
+                {
+                  "position": 0.7,
+                  "color": [
+                    1,
+                    0.7,
+                    0.1
+                  ]
+                },
+                {
+                  "position": 1,
+                  "color": [
+                    0.9,
+                    1,
+                    1
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "l0mixA",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 460
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "overlay",
+            "factor": 0.6
+          }
+        }
+      },
+      {
+        "id": "l0mixB",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 460
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "screen",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l0mixC",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 460
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "softLight",
+            "factor": 0.4
+          }
+        }
+      },
+      {
+        "id": "l0mixD",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 460
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "linearLight",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l1map",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 460
+        },
+        "data": {
+          "kind": "mapping",
+          "values": {
+            "location": [
+              0,
+              0,
+              0
+            ],
+            "rotation": 0.05,
+            "scale": [
+              2,
+              2,
+              1
+            ],
+            "pivot": [
+              0.5,
+              0.5,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "id": "l1noise",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 460
+        },
+        "data": {
+          "kind": "noiseTexture",
+          "values": {
+            "scale": 7,
+            "detail": 15,
+            "roughness": 0.85,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l1voronoi",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 460
+        },
+        "data": {
+          "kind": "voronoi",
+          "values": {
+            "scale": 9,
+            "randomness": 1
+          }
+        }
+      },
+      {
+        "id": "l1magic",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 460
+        },
+        "data": {
+          "kind": "magicTexture",
+          "values": {
+            "depth": 10,
+            "scale": 8,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l1brick",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 920
+        },
+        "data": {
+          "kind": "brickTexture",
+          "values": {
+            "scale": 7,
+            "mortarSize": 0.04,
+            "mortarSmooth": 0.5,
+            "brickWidth": 0.5,
+            "rowHeight": 0.25
+          }
+        }
+      },
+      {
+        "id": "l1wave",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 920
+        },
+        "data": {
+          "kind": "waveTexture",
+          "values": {
+            "type": "rings",
+            "ringsDirection": "spherical",
+            "profile": "triangle",
+            "scale": 10,
+            "distortion": 2,
+            "detail": 15,
+            "detailScale": 2,
+            "detailRoughness": 0.7
+          }
+        }
+      },
+      {
+        "id": "l1ramp",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 920
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "spline",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0,
+                    0,
+                    0.2
+                  ]
+                },
+                {
+                  "position": 0.35,
+                  "color": [
+                    0.8,
+                    0.1,
+                    0.4
+                  ]
+                },
+                {
+                  "position": 0.7,
+                  "color": [
+                    1,
+                    0.7,
+                    0.1
+                  ]
+                },
+                {
+                  "position": 1,
+                  "color": [
+                    0.9,
+                    1,
+                    1
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "l1mixA",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 920
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "overlay",
+            "factor": 0.6
+          }
+        }
+      },
+      {
+        "id": "l1mixB",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 920
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "screen",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l1mixC",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 920
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "softLight",
+            "factor": 0.4
+          }
+        }
+      },
+      {
+        "id": "l1mixD",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 920
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "linearLight",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l1stack",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 920
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "add",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l2map",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 920
+        },
+        "data": {
+          "kind": "mapping",
+          "values": {
+            "location": [
+              0,
+              0,
+              0
+            ],
+            "rotation": 0.1,
+            "scale": [
+              3,
+              3,
+              1
+            ],
+            "pivot": [
+              0.5,
+              0.5,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "id": "l2noise",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1380
+        },
+        "data": {
+          "kind": "noiseTexture",
+          "values": {
+            "scale": 8,
+            "detail": 15,
+            "roughness": 0.85,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l2voronoi",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 1380
+        },
+        "data": {
+          "kind": "voronoi",
+          "values": {
+            "scale": 10,
+            "randomness": 1
+          }
+        }
+      },
+      {
+        "id": "l2magic",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 1380
+        },
+        "data": {
+          "kind": "magicTexture",
+          "values": {
+            "depth": 10,
+            "scale": 9,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l2brick",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 1380
+        },
+        "data": {
+          "kind": "brickTexture",
+          "values": {
+            "scale": 8,
+            "mortarSize": 0.04,
+            "mortarSmooth": 0.5,
+            "brickWidth": 0.5,
+            "rowHeight": 0.25
+          }
+        }
+      },
+      {
+        "id": "l2wave",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 1380
+        },
+        "data": {
+          "kind": "waveTexture",
+          "values": {
+            "type": "rings",
+            "ringsDirection": "spherical",
+            "profile": "triangle",
+            "scale": 11,
+            "distortion": 2,
+            "detail": 15,
+            "detailScale": 2,
+            "detailRoughness": 0.7
+          }
+        }
+      },
+      {
+        "id": "l2ramp",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 1380
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "spline",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0,
+                    0,
+                    0.2
+                  ]
+                },
+                {
+                  "position": 0.35,
+                  "color": [
+                    0.8,
+                    0.1,
+                    0.4
+                  ]
+                },
+                {
+                  "position": 0.7,
+                  "color": [
+                    1,
+                    0.7,
+                    0.1
+                  ]
+                },
+                {
+                  "position": 1,
+                  "color": [
+                    0.9,
+                    1,
+                    1
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "l2mixA",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 1380
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "overlay",
+            "factor": 0.6
+          }
+        }
+      },
+      {
+        "id": "l2mixB",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 1380
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "screen",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l2mixC",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 1380
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "softLight",
+            "factor": 0.4
+          }
+        }
+      },
+      {
+        "id": "l2mixD",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1840
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "linearLight",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l2stack",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 1840
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "add",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l3map",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 1840
+        },
+        "data": {
+          "kind": "mapping",
+          "values": {
+            "location": [
+              0,
+              0,
+              0
+            ],
+            "rotation": 0.15000000000000002,
+            "scale": [
+              4,
+              4,
+              1
+            ],
+            "pivot": [
+              0.5,
+              0.5,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "id": "l3noise",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 1840
+        },
+        "data": {
+          "kind": "noiseTexture",
+          "values": {
+            "scale": 9,
+            "detail": 15,
+            "roughness": 0.85,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l3voronoi",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 1840
+        },
+        "data": {
+          "kind": "voronoi",
+          "values": {
+            "scale": 11,
+            "randomness": 1
+          }
+        }
+      },
+      {
+        "id": "l3magic",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 1840
+        },
+        "data": {
+          "kind": "magicTexture",
+          "values": {
+            "depth": 10,
+            "scale": 10,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l3brick",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 1840
+        },
+        "data": {
+          "kind": "brickTexture",
+          "values": {
+            "scale": 9,
+            "mortarSize": 0.04,
+            "mortarSmooth": 0.5,
+            "brickWidth": 0.5,
+            "rowHeight": 0.25
+          }
+        }
+      },
+      {
+        "id": "l3wave",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 1840
+        },
+        "data": {
+          "kind": "waveTexture",
+          "values": {
+            "type": "rings",
+            "ringsDirection": "spherical",
+            "profile": "triangle",
+            "scale": 12,
+            "distortion": 2,
+            "detail": 15,
+            "detailScale": 2,
+            "detailRoughness": 0.7
+          }
+        }
+      },
+      {
+        "id": "l3ramp",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 1840
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "spline",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0,
+                    0,
+                    0.2
+                  ]
+                },
+                {
+                  "position": 0.35,
+                  "color": [
+                    0.8,
+                    0.1,
+                    0.4
+                  ]
+                },
+                {
+                  "position": 0.7,
+                  "color": [
+                    1,
+                    0.7,
+                    0.1
+                  ]
+                },
+                {
+                  "position": 1,
+                  "color": [
+                    0.9,
+                    1,
+                    1
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "l3mixA",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 2300
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "overlay",
+            "factor": 0.6
+          }
+        }
+      },
+      {
+        "id": "l3mixB",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 2300
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "screen",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l3mixC",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 2300
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "softLight",
+            "factor": 0.4
+          }
+        }
+      },
+      {
+        "id": "l3mixD",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 2300
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "linearLight",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l3stack",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 2300
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "add",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l4map",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 2300
+        },
+        "data": {
+          "kind": "mapping",
+          "values": {
+            "location": [
+              0,
+              0,
+              0
+            ],
+            "rotation": 0.2,
+            "scale": [
+              5,
+              5,
+              1
+            ],
+            "pivot": [
+              0.5,
+              0.5,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "id": "l4noise",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 2300
+        },
+        "data": {
+          "kind": "noiseTexture",
+          "values": {
+            "scale": 10,
+            "detail": 15,
+            "roughness": 0.85,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l4voronoi",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 2300
+        },
+        "data": {
+          "kind": "voronoi",
+          "values": {
+            "scale": 12,
+            "randomness": 1
+          }
+        }
+      },
+      {
+        "id": "l4magic",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 2300
+        },
+        "data": {
+          "kind": "magicTexture",
+          "values": {
+            "depth": 10,
+            "scale": 11,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l4brick",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 2760
+        },
+        "data": {
+          "kind": "brickTexture",
+          "values": {
+            "scale": 10,
+            "mortarSize": 0.04,
+            "mortarSmooth": 0.5,
+            "brickWidth": 0.5,
+            "rowHeight": 0.25
+          }
+        }
+      },
+      {
+        "id": "l4wave",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 2760
+        },
+        "data": {
+          "kind": "waveTexture",
+          "values": {
+            "type": "rings",
+            "ringsDirection": "spherical",
+            "profile": "triangle",
+            "scale": 13,
+            "distortion": 2,
+            "detail": 15,
+            "detailScale": 2,
+            "detailRoughness": 0.7
+          }
+        }
+      },
+      {
+        "id": "l4ramp",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 2760
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "spline",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0,
+                    0,
+                    0.2
+                  ]
+                },
+                {
+                  "position": 0.35,
+                  "color": [
+                    0.8,
+                    0.1,
+                    0.4
+                  ]
+                },
+                {
+                  "position": 0.7,
+                  "color": [
+                    1,
+                    0.7,
+                    0.1
+                  ]
+                },
+                {
+                  "position": 1,
+                  "color": [
+                    0.9,
+                    1,
+                    1
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "l4mixA",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 2760
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "overlay",
+            "factor": 0.6
+          }
+        }
+      },
+      {
+        "id": "l4mixB",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 2760
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "screen",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l4mixC",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 2760
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "softLight",
+            "factor": 0.4
+          }
+        }
+      },
+      {
+        "id": "l4mixD",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 2760
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "linearLight",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l4stack",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 2760
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "add",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l5map",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 2760
+        },
+        "data": {
+          "kind": "mapping",
+          "values": {
+            "location": [
+              0,
+              0,
+              0
+            ],
+            "rotation": 0.25,
+            "scale": [
+              6,
+              6,
+              1
+            ],
+            "pivot": [
+              0.5,
+              0.5,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "id": "l5noise",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 3220
+        },
+        "data": {
+          "kind": "noiseTexture",
+          "values": {
+            "scale": 11,
+            "detail": 15,
+            "roughness": 0.85,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l5voronoi",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 3220
+        },
+        "data": {
+          "kind": "voronoi",
+          "values": {
+            "scale": 13,
+            "randomness": 1
+          }
+        }
+      },
+      {
+        "id": "l5magic",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 3220
+        },
+        "data": {
+          "kind": "magicTexture",
+          "values": {
+            "depth": 10,
+            "scale": 12,
+            "distortion": 2
+          }
+        }
+      },
+      {
+        "id": "l5brick",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 3220
+        },
+        "data": {
+          "kind": "brickTexture",
+          "values": {
+            "scale": 11,
+            "mortarSize": 0.04,
+            "mortarSmooth": 0.5,
+            "brickWidth": 0.5,
+            "rowHeight": 0.25
+          }
+        }
+      },
+      {
+        "id": "l5wave",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 3220
+        },
+        "data": {
+          "kind": "waveTexture",
+          "values": {
+            "type": "rings",
+            "ringsDirection": "spherical",
+            "profile": "triangle",
+            "scale": 14,
+            "distortion": 2,
+            "detail": 15,
+            "detailScale": 2,
+            "detailRoughness": 0.7
+          }
+        }
+      },
+      {
+        "id": "l5ramp",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 3220
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "spline",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0,
+                    0,
+                    0.2
+                  ]
+                },
+                {
+                  "position": 0.35,
+                  "color": [
+                    0.8,
+                    0.1,
+                    0.4
+                  ]
+                },
+                {
+                  "position": 0.7,
+                  "color": [
+                    1,
+                    0.7,
+                    0.1
+                  ]
+                },
+                {
+                  "position": 1,
+                  "color": [
+                    0.9,
+                    1,
+                    1
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "l5mixA",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 3220
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "overlay",
+            "factor": 0.6
+          }
+        }
+      },
+      {
+        "id": "l5mixB",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 3220
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "screen",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l5mixC",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 3220
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "softLight",
+            "factor": 0.4
+          }
+        }
+      },
+      {
+        "id": "l5mixD",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 3680
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "linearLight",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "l5stack",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 3680
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "add",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "ceiling",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 3680
+        },
+        "data": {
+          "kind": "brightnessCeiling",
+          "values": {
+            "ceiling": 0.9
+          }
+        }
+      },
+      {
+        "id": "out",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 3680
+        },
+        "data": {
+          "kind": "output",
+          "values": {}
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-time-time-drift-z",
+        "source": "time",
+        "sourceHandle": "time",
+        "target": "drift",
+        "targetHandle": "z",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-drift-vector-l0map-location",
+        "source": "drift",
+        "sourceHandle": "vector",
+        "target": "l0map",
+        "targetHandle": "location",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0map-vector-l0noise-vector",
+        "source": "l0map",
+        "sourceHandle": "vector",
+        "target": "l0noise",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0map-vector-l0voronoi-vector",
+        "source": "l0map",
+        "sourceHandle": "vector",
+        "target": "l0voronoi",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0map-vector-l0magic-vector",
+        "source": "l0map",
+        "sourceHandle": "vector",
+        "target": "l0magic",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0map-vector-l0brick-vector",
+        "source": "l0map",
+        "sourceHandle": "vector",
+        "target": "l0brick",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0map-vector-l0wave-vector",
+        "source": "l0map",
+        "sourceHandle": "vector",
+        "target": "l0wave",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0noise-fac-l0ramp-fac",
+        "source": "l0noise",
+        "sourceHandle": "fac",
+        "target": "l0ramp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0ramp-color-l0mixA-color1",
+        "source": "l0ramp",
+        "sourceHandle": "color",
+        "target": "l0mixA",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0voronoi-color-l0mixA-color2",
+        "source": "l0voronoi",
+        "sourceHandle": "color",
+        "target": "l0mixA",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0mixA-color-l0mixB-color1",
+        "source": "l0mixA",
+        "sourceHandle": "color",
+        "target": "l0mixB",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0magic-color-l0mixB-color2",
+        "source": "l0magic",
+        "sourceHandle": "color",
+        "target": "l0mixB",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0mixB-color-l0mixC-color1",
+        "source": "l0mixB",
+        "sourceHandle": "color",
+        "target": "l0mixC",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0brick-color-l0mixC-color2",
+        "source": "l0brick",
+        "sourceHandle": "color",
+        "target": "l0mixC",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0mixC-color-l0mixD-color1",
+        "source": "l0mixC",
+        "sourceHandle": "color",
+        "target": "l0mixD",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0wave-color-l0mixD-color2",
+        "source": "l0wave",
+        "sourceHandle": "color",
+        "target": "l0mixD",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-drift-vector-l1map-location",
+        "source": "drift",
+        "sourceHandle": "vector",
+        "target": "l1map",
+        "targetHandle": "location",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1map-vector-l1noise-vector",
+        "source": "l1map",
+        "sourceHandle": "vector",
+        "target": "l1noise",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1map-vector-l1voronoi-vector",
+        "source": "l1map",
+        "sourceHandle": "vector",
+        "target": "l1voronoi",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1map-vector-l1magic-vector",
+        "source": "l1map",
+        "sourceHandle": "vector",
+        "target": "l1magic",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1map-vector-l1brick-vector",
+        "source": "l1map",
+        "sourceHandle": "vector",
+        "target": "l1brick",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1map-vector-l1wave-vector",
+        "source": "l1map",
+        "sourceHandle": "vector",
+        "target": "l1wave",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1noise-fac-l1ramp-fac",
+        "source": "l1noise",
+        "sourceHandle": "fac",
+        "target": "l1ramp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1ramp-color-l1mixA-color1",
+        "source": "l1ramp",
+        "sourceHandle": "color",
+        "target": "l1mixA",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1voronoi-color-l1mixA-color2",
+        "source": "l1voronoi",
+        "sourceHandle": "color",
+        "target": "l1mixA",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1mixA-color-l1mixB-color1",
+        "source": "l1mixA",
+        "sourceHandle": "color",
+        "target": "l1mixB",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1magic-color-l1mixB-color2",
+        "source": "l1magic",
+        "sourceHandle": "color",
+        "target": "l1mixB",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1mixB-color-l1mixC-color1",
+        "source": "l1mixB",
+        "sourceHandle": "color",
+        "target": "l1mixC",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1brick-color-l1mixC-color2",
+        "source": "l1brick",
+        "sourceHandle": "color",
+        "target": "l1mixC",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1mixC-color-l1mixD-color1",
+        "source": "l1mixC",
+        "sourceHandle": "color",
+        "target": "l1mixD",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1wave-color-l1mixD-color2",
+        "source": "l1wave",
+        "sourceHandle": "color",
+        "target": "l1mixD",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l0mixD-color-l1stack-color1",
+        "source": "l0mixD",
+        "sourceHandle": "color",
+        "target": "l1stack",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1mixD-color-l1stack-color2",
+        "source": "l1mixD",
+        "sourceHandle": "color",
+        "target": "l1stack",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-drift-vector-l2map-location",
+        "source": "drift",
+        "sourceHandle": "vector",
+        "target": "l2map",
+        "targetHandle": "location",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2map-vector-l2noise-vector",
+        "source": "l2map",
+        "sourceHandle": "vector",
+        "target": "l2noise",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2map-vector-l2voronoi-vector",
+        "source": "l2map",
+        "sourceHandle": "vector",
+        "target": "l2voronoi",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2map-vector-l2magic-vector",
+        "source": "l2map",
+        "sourceHandle": "vector",
+        "target": "l2magic",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2map-vector-l2brick-vector",
+        "source": "l2map",
+        "sourceHandle": "vector",
+        "target": "l2brick",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2map-vector-l2wave-vector",
+        "source": "l2map",
+        "sourceHandle": "vector",
+        "target": "l2wave",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2noise-fac-l2ramp-fac",
+        "source": "l2noise",
+        "sourceHandle": "fac",
+        "target": "l2ramp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2ramp-color-l2mixA-color1",
+        "source": "l2ramp",
+        "sourceHandle": "color",
+        "target": "l2mixA",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2voronoi-color-l2mixA-color2",
+        "source": "l2voronoi",
+        "sourceHandle": "color",
+        "target": "l2mixA",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2mixA-color-l2mixB-color1",
+        "source": "l2mixA",
+        "sourceHandle": "color",
+        "target": "l2mixB",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2magic-color-l2mixB-color2",
+        "source": "l2magic",
+        "sourceHandle": "color",
+        "target": "l2mixB",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2mixB-color-l2mixC-color1",
+        "source": "l2mixB",
+        "sourceHandle": "color",
+        "target": "l2mixC",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2brick-color-l2mixC-color2",
+        "source": "l2brick",
+        "sourceHandle": "color",
+        "target": "l2mixC",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2mixC-color-l2mixD-color1",
+        "source": "l2mixC",
+        "sourceHandle": "color",
+        "target": "l2mixD",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2wave-color-l2mixD-color2",
+        "source": "l2wave",
+        "sourceHandle": "color",
+        "target": "l2mixD",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l1stack-color-l2stack-color1",
+        "source": "l1stack",
+        "sourceHandle": "color",
+        "target": "l2stack",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2mixD-color-l2stack-color2",
+        "source": "l2mixD",
+        "sourceHandle": "color",
+        "target": "l2stack",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-drift-vector-l3map-location",
+        "source": "drift",
+        "sourceHandle": "vector",
+        "target": "l3map",
+        "targetHandle": "location",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3map-vector-l3noise-vector",
+        "source": "l3map",
+        "sourceHandle": "vector",
+        "target": "l3noise",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3map-vector-l3voronoi-vector",
+        "source": "l3map",
+        "sourceHandle": "vector",
+        "target": "l3voronoi",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3map-vector-l3magic-vector",
+        "source": "l3map",
+        "sourceHandle": "vector",
+        "target": "l3magic",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3map-vector-l3brick-vector",
+        "source": "l3map",
+        "sourceHandle": "vector",
+        "target": "l3brick",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3map-vector-l3wave-vector",
+        "source": "l3map",
+        "sourceHandle": "vector",
+        "target": "l3wave",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3noise-fac-l3ramp-fac",
+        "source": "l3noise",
+        "sourceHandle": "fac",
+        "target": "l3ramp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3ramp-color-l3mixA-color1",
+        "source": "l3ramp",
+        "sourceHandle": "color",
+        "target": "l3mixA",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3voronoi-color-l3mixA-color2",
+        "source": "l3voronoi",
+        "sourceHandle": "color",
+        "target": "l3mixA",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3mixA-color-l3mixB-color1",
+        "source": "l3mixA",
+        "sourceHandle": "color",
+        "target": "l3mixB",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3magic-color-l3mixB-color2",
+        "source": "l3magic",
+        "sourceHandle": "color",
+        "target": "l3mixB",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3mixB-color-l3mixC-color1",
+        "source": "l3mixB",
+        "sourceHandle": "color",
+        "target": "l3mixC",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3brick-color-l3mixC-color2",
+        "source": "l3brick",
+        "sourceHandle": "color",
+        "target": "l3mixC",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3mixC-color-l3mixD-color1",
+        "source": "l3mixC",
+        "sourceHandle": "color",
+        "target": "l3mixD",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3wave-color-l3mixD-color2",
+        "source": "l3wave",
+        "sourceHandle": "color",
+        "target": "l3mixD",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l2stack-color-l3stack-color1",
+        "source": "l2stack",
+        "sourceHandle": "color",
+        "target": "l3stack",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3mixD-color-l3stack-color2",
+        "source": "l3mixD",
+        "sourceHandle": "color",
+        "target": "l3stack",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-drift-vector-l4map-location",
+        "source": "drift",
+        "sourceHandle": "vector",
+        "target": "l4map",
+        "targetHandle": "location",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4map-vector-l4noise-vector",
+        "source": "l4map",
+        "sourceHandle": "vector",
+        "target": "l4noise",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4map-vector-l4voronoi-vector",
+        "source": "l4map",
+        "sourceHandle": "vector",
+        "target": "l4voronoi",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4map-vector-l4magic-vector",
+        "source": "l4map",
+        "sourceHandle": "vector",
+        "target": "l4magic",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4map-vector-l4brick-vector",
+        "source": "l4map",
+        "sourceHandle": "vector",
+        "target": "l4brick",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4map-vector-l4wave-vector",
+        "source": "l4map",
+        "sourceHandle": "vector",
+        "target": "l4wave",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4noise-fac-l4ramp-fac",
+        "source": "l4noise",
+        "sourceHandle": "fac",
+        "target": "l4ramp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4ramp-color-l4mixA-color1",
+        "source": "l4ramp",
+        "sourceHandle": "color",
+        "target": "l4mixA",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4voronoi-color-l4mixA-color2",
+        "source": "l4voronoi",
+        "sourceHandle": "color",
+        "target": "l4mixA",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4mixA-color-l4mixB-color1",
+        "source": "l4mixA",
+        "sourceHandle": "color",
+        "target": "l4mixB",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4magic-color-l4mixB-color2",
+        "source": "l4magic",
+        "sourceHandle": "color",
+        "target": "l4mixB",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4mixB-color-l4mixC-color1",
+        "source": "l4mixB",
+        "sourceHandle": "color",
+        "target": "l4mixC",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4brick-color-l4mixC-color2",
+        "source": "l4brick",
+        "sourceHandle": "color",
+        "target": "l4mixC",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4mixC-color-l4mixD-color1",
+        "source": "l4mixC",
+        "sourceHandle": "color",
+        "target": "l4mixD",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4wave-color-l4mixD-color2",
+        "source": "l4wave",
+        "sourceHandle": "color",
+        "target": "l4mixD",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l3stack-color-l4stack-color1",
+        "source": "l3stack",
+        "sourceHandle": "color",
+        "target": "l4stack",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4mixD-color-l4stack-color2",
+        "source": "l4mixD",
+        "sourceHandle": "color",
+        "target": "l4stack",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-drift-vector-l5map-location",
+        "source": "drift",
+        "sourceHandle": "vector",
+        "target": "l5map",
+        "targetHandle": "location",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5map-vector-l5noise-vector",
+        "source": "l5map",
+        "sourceHandle": "vector",
+        "target": "l5noise",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5map-vector-l5voronoi-vector",
+        "source": "l5map",
+        "sourceHandle": "vector",
+        "target": "l5voronoi",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5map-vector-l5magic-vector",
+        "source": "l5map",
+        "sourceHandle": "vector",
+        "target": "l5magic",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5map-vector-l5brick-vector",
+        "source": "l5map",
+        "sourceHandle": "vector",
+        "target": "l5brick",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5map-vector-l5wave-vector",
+        "source": "l5map",
+        "sourceHandle": "vector",
+        "target": "l5wave",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5noise-fac-l5ramp-fac",
+        "source": "l5noise",
+        "sourceHandle": "fac",
+        "target": "l5ramp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5ramp-color-l5mixA-color1",
+        "source": "l5ramp",
+        "sourceHandle": "color",
+        "target": "l5mixA",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5voronoi-color-l5mixA-color2",
+        "source": "l5voronoi",
+        "sourceHandle": "color",
+        "target": "l5mixA",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5mixA-color-l5mixB-color1",
+        "source": "l5mixA",
+        "sourceHandle": "color",
+        "target": "l5mixB",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5magic-color-l5mixB-color2",
+        "source": "l5magic",
+        "sourceHandle": "color",
+        "target": "l5mixB",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5mixB-color-l5mixC-color1",
+        "source": "l5mixB",
+        "sourceHandle": "color",
+        "target": "l5mixC",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5brick-color-l5mixC-color2",
+        "source": "l5brick",
+        "sourceHandle": "color",
+        "target": "l5mixC",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5mixC-color-l5mixD-color1",
+        "source": "l5mixC",
+        "sourceHandle": "color",
+        "target": "l5mixD",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5wave-color-l5mixD-color2",
+        "source": "l5wave",
+        "sourceHandle": "color",
+        "target": "l5mixD",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l4stack-color-l5stack-color1",
+        "source": "l4stack",
+        "sourceHandle": "color",
+        "target": "l5stack",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5mixD-color-l5stack-color2",
+        "source": "l5mixD",
+        "sourceHandle": "color",
+        "target": "l5stack",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-l5stack-color-ceiling-color",
+        "source": "l5stack",
+        "sourceHandle": "color",
+        "target": "ceiling",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ceiling-color-out-color",
+        "source": "ceiling",
+        "sourceHandle": "color",
+        "target": "out",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,483 @@
+{
+  "app": "wledtoy",
+  "formatVersion": 1,
+  "graph": {
+    "version": 3,
+    "nodes": [
+      {
+        "id": "uv",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "data": {
+          "kind": "uv",
+          "values": {}
+        }
+      },
+      {
+        "id": "time",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 200
+        },
+        "data": {
+          "kind": "time",
+          "values": {}
+        }
+      },
+      {
+        "id": "song",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 420
+        },
+        "data": {
+          "kind": "audioSource",
+          "values": {}
+        }
+      },
+      {
+        "id": "audio",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 420
+        },
+        "data": {
+          "kind": "audio",
+          "values": {}
+        }
+      },
+      {
+        "id": "spectrum",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": -140
+        },
+        "data": {
+          "kind": "spectrum",
+          "values": {}
+        }
+      },
+      {
+        "id": "bandGate",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": -160
+        },
+        "data": {
+          "kind": "mask",
+          "values": {
+            "threshold": 0.5,
+            "softness": 0.06
+          }
+        }
+      },
+      {
+        "id": "drift",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 160
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "b": 0.05
+          }
+        }
+      },
+      {
+        "id": "huePosition",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 100
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add"
+          }
+        }
+      },
+      {
+        "id": "palette",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 80
+        },
+        "data": {
+          "kind": "gradientPalette",
+          "values": {
+            "palette": "rainbow"
+          }
+        }
+      },
+      {
+        "id": "bands",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": -80
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {}
+        }
+      },
+      {
+        "id": "left",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 340
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "subtract",
+            "b": 0.5
+          }
+        }
+      },
+      {
+        "id": "right",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 560
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "subtract",
+            "a": 0.5
+          }
+        }
+      },
+      {
+        "id": "fromCenter",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 440
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "maximum"
+          }
+        }
+      },
+      {
+        "id": "burstWidth",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 700
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "b": 0.35
+          }
+        }
+      },
+      {
+        "id": "kickGate",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 940
+        },
+        "data": {
+          "kind": "mask",
+          "values": {
+            "threshold": 0.6,
+            "softness": 0.1
+          }
+        }
+      },
+      {
+        "id": "burst",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 520
+        },
+        "data": {
+          "kind": "mask",
+          "values": {
+            "invert": true,
+            "softness": 0.01
+          }
+        }
+      },
+      {
+        "id": "flash",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 120
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "layer": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      },
+      {
+        "id": "out",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 120
+        },
+        "data": {
+          "kind": "output",
+          "values": {
+            "gamma": 2.2,
+            "dithering": "temporal"
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-song-audio-audio-audio",
+        "source": "song",
+        "sourceHandle": "audio",
+        "target": "audio",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-spectrum-level-bandGate-value",
+        "source": "spectrum",
+        "sourceHandle": "level",
+        "target": "bandGate",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-time-time-drift-a",
+        "source": "time",
+        "sourceHandle": "time",
+        "target": "drift",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-uv-x-huePosition-a",
+        "source": "uv",
+        "sourceHandle": "x",
+        "target": "huePosition",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-drift-result-huePosition-b",
+        "source": "drift",
+        "sourceHandle": "result",
+        "target": "huePosition",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-huePosition-result-palette-position",
+        "source": "huePosition",
+        "sourceHandle": "result",
+        "target": "palette",
+        "targetHandle": "position",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-palette-color-bands-layer",
+        "source": "palette",
+        "sourceHandle": "color",
+        "target": "bands",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-bandGate-mask-bands-mask",
+        "source": "bandGate",
+        "sourceHandle": "mask",
+        "target": "bands",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-uv-x-left-a",
+        "source": "uv",
+        "sourceHandle": "x",
+        "target": "left",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-uv-x-right-b",
+        "source": "uv",
+        "sourceHandle": "x",
+        "target": "right",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-left-result-fromCenter-a",
+        "source": "left",
+        "sourceHandle": "result",
+        "target": "fromCenter",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-right-result-fromCenter-b",
+        "source": "right",
+        "sourceHandle": "result",
+        "target": "fromCenter",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-kick-burstWidth-a",
+        "source": "audio",
+        "sourceHandle": "kick",
+        "target": "burstWidth",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-kick-kickGate-value",
+        "source": "audio",
+        "sourceHandle": "kick",
+        "target": "kickGate",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-fromCenter-result-burst-value",
+        "source": "fromCenter",
+        "sourceHandle": "result",
+        "target": "burst",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-burstWidth-result-burst-threshold",
+        "source": "burstWidth",
+        "sourceHandle": "result",
+        "target": "burst",
+        "targetHandle": "threshold",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-bands-color-flash-base",
+        "source": "bands",
+        "sourceHandle": "color",
+        "target": "flash",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kickGate-mask-flash-opacity",
+        "source": "kickGate",
+        "sourceHandle": "mask",
+        "target": "flash",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-burst-mask-flash-mask",
+        "source": "burst",
+        "sourceHandle": "mask",
+        "target": "flash",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-flash-color-out-color",
+        "source": "flash",
+        "sourceHandle": "color",
+        "target": "out",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      }
+    ]
+  }
+}

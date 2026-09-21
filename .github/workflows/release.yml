@@ -1,0 +1,108 @@
+name: release
+
+on:
+  push:
+    branches: [main]
+    paths: [package.json]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  draft-release:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    outputs:
+      release_id: ${{ steps.draft.outputs.release_id }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # One job owns the draft so the matrix builds never race to create duplicates.
+      # The tag v<package.json version> is created by GitHub when the draft is published.
+      # release_id stays empty off main or once that version is published, so builds upload nothing to a release.
+      - name: Create or reuse draft release for the package.json version
+        id: draft
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="v$(jq -r .version package.json)"
+          if ! is_draft=$(gh release view "$tag" --json isDraft --jq .isDraft 2>/dev/null); then
+            gh release create "$tag" --draft --target "$GITHUB_SHA" --generate-notes --title "WLEDtoy $tag"
+          elif [ "$is_draft" = true ]; then
+            gh release edit "$tag" --target "$GITHUB_SHA"
+          else
+            echo "::notice::$tag is already published, nothing to release"
+            exit 0
+          fi
+          echo "release_id=$(gh release view "$tag" --json databaseId --jq .databaseId)" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: draft-release
+    if: needs.draft-release.outputs.release_id != '' || github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: linux-amd64
+            runner: ubuntu-22.04
+          - name: linux-arm64
+            runner: ubuntu-22.04-arm
+          - name: windows-amd64
+            runner: windows-latest
+          - name: windows-arm64
+            runner: windows-11-arm
+          - name: macos-arm64
+            runner: macos-latest
+            target: aarch64-apple-darwin
+          - name: macos-amd64
+            runner: macos-latest
+            target: x86_64-apple-darwin
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install Linux build dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - uses: dtolnay/rust-toolchain@6bed0761d98439e5a578e2877258200ad565ba87 # stable
+        with:
+          toolchain: stable
+          targets: ${{ matrix.target }}
+
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
+        with:
+          workspaces: src-tauri
+          key: ${{ matrix.name }}
+
+      - run: pnpm install --frozen-lockfile
+
+      - uses: tauri-apps/tauri-action@1deb371b0cd8bd54025b384f1cd735e725c4060f # action-v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          # Ad-hoc signature: without one, Apple Silicon reports the downloaded app as damaged.
+          APPLE_SIGNING_IDENTITY: ${{ runner.os == 'macOS' && '-' || '' }}
+        with:
+          releaseId: ${{ needs.draft-release.outputs.release_id }}
+          args: ${{ matrix.target && format('--target {0}', matrix.target) || '' }}
+          uploadUpdaterJson: false
+          uploadWorkflowArtifacts: ${{ needs.draft-release.outputs.release_id == '' }}

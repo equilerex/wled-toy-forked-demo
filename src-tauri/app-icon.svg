@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="ember" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff8a4f" />
+      <stop offset="1" stop-color="#e2502a" />
+    </linearGradient>
+  </defs>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#ember)" />
+  <path d="M272 352 L380 680 L512 420 L644 680 L752 352" fill="none" stroke="#1c1412" stroke-width="84" stroke-linecap="round" stroke-linejoin="round" />
+  <g fill="#fff4e8">
+    <circle cx="272" cy="352" r="20" />
+    <circle cx="380" cy="680" r="20" />
+    <circle cx="512" cy="420" r="20" />
+    <circle cx="644" cy="680" r="20" />
+    <circle cx="752" cy="352" r="20" />
+  </g>
+</svg>

@@ -1,0 +1,3700 @@
+{
+  "app": "wledtoy",
+  "formatVersion": 1,
+  "graph": {
+    "version": 3,
+    "nodes": [
+      {
+        "id": "source",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "data": {
+          "kind": "audioSource",
+          "values": {}
+        }
+      },
+      {
+        "id": "audio",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 0
+        },
+        "data": {
+          "kind": "audio",
+          "values": {}
+        }
+      },
+      {
+        "id": "uv",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 0
+        },
+        "data": {
+          "kind": "uv",
+          "values": {}
+        }
+      },
+      {
+        "id": "time",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 0
+        },
+        "data": {
+          "kind": "time",
+          "values": {}
+        }
+      },
+      {
+        "id": "fft0",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 0
+        },
+        "data": {
+          "kind": "fft",
+          "values": {
+            "windowSize": "4096",
+            "hop": "256",
+            "window": "hann",
+            "scale": "mel",
+            "bands": 128,
+            "fmin": 40,
+            "fmax": 16000
+          }
+        }
+      },
+      {
+        "id": "spec0",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 0
+        },
+        "data": {
+          "kind": "spectrum",
+          "values": {}
+        }
+      },
+      {
+        "id": "fft1",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 0
+        },
+        "data": {
+          "kind": "fft",
+          "values": {
+            "windowSize": "1024",
+            "hop": "256",
+            "window": "blackman",
+            "scale": "log",
+            "bands": 64,
+            "fmin": 200,
+            "fmax": 12000
+          }
+        }
+      },
+      {
+        "id": "split1",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 0
+        },
+        "data": {
+          "kind": "bandSplit",
+          "values": {
+            "low": 2000,
+            "high": 8000
+          }
+        }
+      },
+      {
+        "id": "kc0s0",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 0
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.02,
+            "release": 0.25
+          }
+        }
+      },
+      {
+        "id": "kc0s1",
+        "type": "shader",
+        "position": {
+          "x": 2880,
+          "y": 0
+        },
+        "data": {
+          "kind": "slewLimiter",
+          "values": {
+            "rise": 4,
+            "fall": 1.5
+          }
+        }
+      },
+      {
+        "id": "kc0s2",
+        "type": "shader",
+        "position": {
+          "x": 3200,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "b": 0.95
+          }
+        }
+      },
+      {
+        "id": "kc0s3",
+        "type": "shader",
+        "position": {
+          "x": 3520,
+          "y": 0
+        },
+        "data": {
+          "kind": "wave",
+          "values": {
+            "shape": "sine",
+            "frequency": 1.5,
+            "phase": 0
+          }
+        }
+      },
+      {
+        "id": "kc0s4",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 460
+        },
+        "data": {
+          "kind": "peakHold",
+          "values": {
+            "hold": 0.15,
+            "decay": 0.6
+          }
+        }
+      },
+      {
+        "id": "kc0s5",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 460
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "clamp": true,
+            "inLow": 0,
+            "inHigh": 1,
+            "outLow": 0.1,
+            "outHigh": 0.9
+          }
+        }
+      },
+      {
+        "id": "kc0s6",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 460
+        },
+        "data": {
+          "kind": "curve",
+          "values": {
+            "curve": "smooth"
+          }
+        }
+      },
+      {
+        "id": "kc0s7",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 460
+        },
+        "data": {
+          "kind": "schmittTrigger",
+          "values": {
+            "low": 0.35,
+            "high": 0.6
+          }
+        }
+      },
+      {
+        "id": "kc0s8",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 460
+        },
+        "data": {
+          "kind": "sampleHold",
+          "values": {}
+        }
+      },
+      {
+        "id": "kc0s9",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 460
+        },
+        "data": {
+          "kind": "counter",
+          "values": {
+            "steps": 8
+          }
+        }
+      },
+      {
+        "id": "kc0s10",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 460
+        },
+        "data": {
+          "kind": "stepSequencer",
+          "values": {
+            "steps": "1 0.25 0.75 0 0.5"
+          }
+        }
+      },
+      {
+        "id": "kc0s11",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 460
+        },
+        "data": {
+          "kind": "integrator",
+          "values": {
+            "wrap": true,
+            "rate": 1
+          }
+        }
+      },
+      {
+        "id": "kc1s0",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 460
+        },
+        "data": {
+          "kind": "slewLimiter",
+          "values": {
+            "rise": 4,
+            "fall": 1.5
+          }
+        }
+      },
+      {
+        "id": "kc1s1",
+        "type": "shader",
+        "position": {
+          "x": 2880,
+          "y": 460
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "b": 0.95
+          }
+        }
+      },
+      {
+        "id": "kc1s2",
+        "type": "shader",
+        "position": {
+          "x": 3200,
+          "y": 460
+        },
+        "data": {
+          "kind": "wave",
+          "values": {
+            "shape": "sine",
+            "frequency": 1.5,
+            "phase": 0
+          }
+        }
+      },
+      {
+        "id": "kc1s3",
+        "type": "shader",
+        "position": {
+          "x": 3520,
+          "y": 460
+        },
+        "data": {
+          "kind": "peakHold",
+          "values": {
+            "hold": 0.15,
+            "decay": 0.6
+          }
+        }
+      },
+      {
+        "id": "kc1s4",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 920
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "clamp": true,
+            "inLow": 0,
+            "inHigh": 1,
+            "outLow": 0.1,
+            "outHigh": 0.9
+          }
+        }
+      },
+      {
+        "id": "kc1s5",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 920
+        },
+        "data": {
+          "kind": "curve",
+          "values": {
+            "curve": "smooth"
+          }
+        }
+      },
+      {
+        "id": "kc1s6",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 920
+        },
+        "data": {
+          "kind": "schmittTrigger",
+          "values": {
+            "low": 0.35,
+            "high": 0.6
+          }
+        }
+      },
+      {
+        "id": "kc1s7",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 920
+        },
+        "data": {
+          "kind": "sampleHold",
+          "values": {}
+        }
+      },
+      {
+        "id": "kc1s8",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 920
+        },
+        "data": {
+          "kind": "counter",
+          "values": {
+            "steps": 8
+          }
+        }
+      },
+      {
+        "id": "kc1s9",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 920
+        },
+        "data": {
+          "kind": "stepSequencer",
+          "values": {
+            "steps": "1 0.25 0.75 0 0.5"
+          }
+        }
+      },
+      {
+        "id": "kc1s10",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 920
+        },
+        "data": {
+          "kind": "integrator",
+          "values": {
+            "wrap": true,
+            "rate": 1
+          }
+        }
+      },
+      {
+        "id": "kc1s11",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 920
+        },
+        "data": {
+          "kind": "clockDivider",
+          "values": {
+            "divide": 3
+          }
+        }
+      },
+      {
+        "id": "kc2s0",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 920
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "b": 0.95
+          }
+        }
+      },
+      {
+        "id": "kc2s1",
+        "type": "shader",
+        "position": {
+          "x": 2880,
+          "y": 920
+        },
+        "data": {
+          "kind": "wave",
+          "values": {
+            "shape": "sine",
+            "frequency": 1.5,
+            "phase": 0
+          }
+        }
+      },
+      {
+        "id": "kc2s2",
+        "type": "shader",
+        "position": {
+          "x": 3200,
+          "y": 920
+        },
+        "data": {
+          "kind": "peakHold",
+          "values": {
+            "hold": 0.15,
+            "decay": 0.6
+          }
+        }
+      },
+      {
+        "id": "kc2s3",
+        "type": "shader",
+        "position": {
+          "x": 3520,
+          "y": 920
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "clamp": true,
+            "inLow": 0,
+            "inHigh": 1,
+            "outLow": 0.1,
+            "outHigh": 0.9
+          }
+        }
+      },
+      {
+        "id": "kc2s4",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1380
+        },
+        "data": {
+          "kind": "curve",
+          "values": {
+            "curve": "smooth"
+          }
+        }
+      },
+      {
+        "id": "kc2s5",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 1380
+        },
+        "data": {
+          "kind": "schmittTrigger",
+          "values": {
+            "low": 0.35,
+            "high": 0.6
+          }
+        }
+      },
+      {
+        "id": "kc2s6",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 1380
+        },
+        "data": {
+          "kind": "sampleHold",
+          "values": {}
+        }
+      },
+      {
+        "id": "kc2s7",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 1380
+        },
+        "data": {
+          "kind": "counter",
+          "values": {
+            "steps": 8
+          }
+        }
+      },
+      {
+        "id": "kc2s8",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 1380
+        },
+        "data": {
+          "kind": "stepSequencer",
+          "values": {
+            "steps": "1 0.25 0.75 0 0.5"
+          }
+        }
+      },
+      {
+        "id": "kc2s9",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 1380
+        },
+        "data": {
+          "kind": "integrator",
+          "values": {
+            "wrap": true,
+            "rate": 1
+          }
+        }
+      },
+      {
+        "id": "kc2s10",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 1380
+        },
+        "data": {
+          "kind": "clockDivider",
+          "values": {
+            "divide": 3
+          }
+        }
+      },
+      {
+        "id": "kc2s11",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 1380
+        },
+        "data": {
+          "kind": "toggle",
+          "values": {}
+        }
+      },
+      {
+        "id": "kc3s0",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 1380
+        },
+        "data": {
+          "kind": "wave",
+          "values": {
+            "shape": "sine",
+            "frequency": 1.5,
+            "phase": 0
+          }
+        }
+      },
+      {
+        "id": "kc3s1",
+        "type": "shader",
+        "position": {
+          "x": 2880,
+          "y": 1380
+        },
+        "data": {
+          "kind": "peakHold",
+          "values": {
+            "hold": 0.15,
+            "decay": 0.6
+          }
+        }
+      },
+      {
+        "id": "kc3s2",
+        "type": "shader",
+        "position": {
+          "x": 3200,
+          "y": 1380
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "clamp": true,
+            "inLow": 0,
+            "inHigh": 1,
+            "outLow": 0.1,
+            "outHigh": 0.9
+          }
+        }
+      },
+      {
+        "id": "kc3s3",
+        "type": "shader",
+        "position": {
+          "x": 3520,
+          "y": 1380
+        },
+        "data": {
+          "kind": "curve",
+          "values": {
+            "curve": "smooth"
+          }
+        }
+      },
+      {
+        "id": "kc3s4",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1840
+        },
+        "data": {
+          "kind": "schmittTrigger",
+          "values": {
+            "low": 0.35,
+            "high": 0.6
+          }
+        }
+      },
+      {
+        "id": "kc3s5",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 1840
+        },
+        "data": {
+          "kind": "sampleHold",
+          "values": {}
+        }
+      },
+      {
+        "id": "kc3s6",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 1840
+        },
+        "data": {
+          "kind": "counter",
+          "values": {
+            "steps": 8
+          }
+        }
+      },
+      {
+        "id": "kc3s7",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 1840
+        },
+        "data": {
+          "kind": "stepSequencer",
+          "values": {
+            "steps": "1 0.25 0.75 0 0.5"
+          }
+        }
+      },
+      {
+        "id": "kc3s8",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 1840
+        },
+        "data": {
+          "kind": "integrator",
+          "values": {
+            "wrap": true,
+            "rate": 1
+          }
+        }
+      },
+      {
+        "id": "kc3s9",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 1840
+        },
+        "data": {
+          "kind": "clockDivider",
+          "values": {
+            "divide": 3
+          }
+        }
+      },
+      {
+        "id": "kc3s10",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 1840
+        },
+        "data": {
+          "kind": "toggle",
+          "values": {}
+        }
+      },
+      {
+        "id": "kc3s11",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 1840
+        },
+        "data": {
+          "kind": "envelope",
+          "values": {
+            "mode": "ad",
+            "attack": 0.02,
+            "decay": 0.3,
+            "sustain": 0.5,
+            "release": 0.3
+          }
+        }
+      },
+      {
+        "id": "ksum0_0",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 1840
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "ksum0_2",
+        "type": "shader",
+        "position": {
+          "x": 2880,
+          "y": 1840
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "ksum1_0",
+        "type": "shader",
+        "position": {
+          "x": 3200,
+          "y": 1840
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "kw0_0",
+        "type": "shader",
+        "position": {
+          "x": 3520,
+          "y": 1840
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "b": 1.01
+          }
+        }
+      },
+      {
+        "id": "kw0_1",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 2300
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "b": 0.003
+          }
+        }
+      },
+      {
+        "id": "kw0_2",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 2300
+        },
+        "data": {
+          "kind": "clamp",
+          "values": {
+            "type": "minMax",
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "kw0_3",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 2300
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "mode": "mix",
+            "b": 1
+          }
+        }
+      },
+      {
+        "id": "kw0_4",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 2300
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "fraction"
+          }
+        }
+      },
+      {
+        "id": "kw0_5",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 2300
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "smoothMax",
+            "b": 0.2,
+            "c": 0.1
+          }
+        }
+      },
+      {
+        "id": "kw0_6",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 2300
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "sine"
+          }
+        }
+      },
+      {
+        "id": "kw0_7",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 2300
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "absolute"
+          }
+        }
+      },
+      {
+        "id": "kw0_8",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 2300
+        },
+        "data": {
+          "kind": "smoothstep",
+          "values": {
+            "low": 0,
+            "high": 1
+          }
+        }
+      },
+      {
+        "id": "kw0_9",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 2300
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "wrap",
+            "b": 0,
+            "c": 1
+          }
+        }
+      },
+      {
+        "id": "kw0_10",
+        "type": "shader",
+        "position": {
+          "x": 2880,
+          "y": 2300
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "b": 1.01
+          }
+        }
+      },
+      {
+        "id": "kw0_11",
+        "type": "shader",
+        "position": {
+          "x": 3200,
+          "y": 2300
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "b": 0.003
+          }
+        }
+      },
+      {
+        "id": "kw0_12",
+        "type": "shader",
+        "position": {
+          "x": 3520,
+          "y": 2300
+        },
+        "data": {
+          "kind": "clamp",
+          "values": {
+            "type": "minMax",
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "kw0_13",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 2760
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "mode": "mix",
+            "b": 1
+          }
+        }
+      },
+      {
+        "id": "kw0_14",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 2760
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "fraction"
+          }
+        }
+      },
+      {
+        "id": "kw1_0",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 2760
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "b": 0.003
+          }
+        }
+      },
+      {
+        "id": "kw1_1",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 2760
+        },
+        "data": {
+          "kind": "clamp",
+          "values": {
+            "type": "minMax",
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "kw1_2",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 2760
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "mode": "mix",
+            "b": 1
+          }
+        }
+      },
+      {
+        "id": "kw1_3",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 2760
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "fraction"
+          }
+        }
+      },
+      {
+        "id": "kw1_4",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 2760
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "smoothMax",
+            "b": 0.2,
+            "c": 0.1
+          }
+        }
+      },
+      {
+        "id": "kw1_5",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 2760
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "sine"
+          }
+        }
+      },
+      {
+        "id": "kw1_6",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 2760
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "absolute"
+          }
+        }
+      },
+      {
+        "id": "kw1_7",
+        "type": "shader",
+        "position": {
+          "x": 2880,
+          "y": 2760
+        },
+        "data": {
+          "kind": "smoothstep",
+          "values": {
+            "low": 0,
+            "high": 1
+          }
+        }
+      },
+      {
+        "id": "kw1_8",
+        "type": "shader",
+        "position": {
+          "x": 3200,
+          "y": 2760
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "wrap",
+            "b": 0,
+            "c": 1
+          }
+        }
+      },
+      {
+        "id": "kw1_9",
+        "type": "shader",
+        "position": {
+          "x": 3520,
+          "y": 2760
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "b": 1.01
+          }
+        }
+      },
+      {
+        "id": "kw1_10",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 3220
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "b": 0.003
+          }
+        }
+      },
+      {
+        "id": "kw1_11",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 3220
+        },
+        "data": {
+          "kind": "clamp",
+          "values": {
+            "type": "minMax",
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "kw1_12",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 3220
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "mode": "mix",
+            "b": 1
+          }
+        }
+      },
+      {
+        "id": "kw1_13",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 3220
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "fraction"
+          }
+        }
+      },
+      {
+        "id": "kw1_14",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 3220
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "smoothMax",
+            "b": 0.2,
+            "c": 0.1
+          }
+        }
+      },
+      {
+        "id": "kw2_0",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 3220
+        },
+        "data": {
+          "kind": "clamp",
+          "values": {
+            "type": "minMax",
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "kw2_1",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 3220
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "mode": "mix",
+            "b": 1
+          }
+        }
+      },
+      {
+        "id": "kw2_2",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 3220
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "fraction"
+          }
+        }
+      },
+      {
+        "id": "kw2_3",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 3220
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "smoothMax",
+            "b": 0.2,
+            "c": 0.1
+          }
+        }
+      },
+      {
+        "id": "kw2_4",
+        "type": "shader",
+        "position": {
+          "x": 2880,
+          "y": 3220
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "sine"
+          }
+        }
+      },
+      {
+        "id": "kw2_5",
+        "type": "shader",
+        "position": {
+          "x": 3200,
+          "y": 3220
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "absolute"
+          }
+        }
+      },
+      {
+        "id": "kw2_6",
+        "type": "shader",
+        "position": {
+          "x": 3520,
+          "y": 3220
+        },
+        "data": {
+          "kind": "smoothstep",
+          "values": {
+            "low": 0,
+            "high": 1
+          }
+        }
+      },
+      {
+        "id": "kw2_7",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 3680
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "wrap",
+            "b": 0,
+            "c": 1
+          }
+        }
+      },
+      {
+        "id": "kw2_8",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 3680
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "b": 1.01
+          }
+        }
+      },
+      {
+        "id": "kw2_9",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 3680
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "b": 0.003
+          }
+        }
+      },
+      {
+        "id": "kw2_10",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 3680
+        },
+        "data": {
+          "kind": "clamp",
+          "values": {
+            "type": "minMax",
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "kw2_11",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 3680
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "mode": "mix",
+            "b": 1
+          }
+        }
+      },
+      {
+        "id": "kw2_12",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 3680
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "fraction"
+          }
+        }
+      },
+      {
+        "id": "kw2_13",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 3680
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "smoothMax",
+            "b": 0.2,
+            "c": 0.1
+          }
+        }
+      },
+      {
+        "id": "kw2_14",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 3680
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "sine"
+          }
+        }
+      },
+      {
+        "id": "kw3_0",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 3680
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "mode": "mix",
+            "b": 1
+          }
+        }
+      },
+      {
+        "id": "kw3_1",
+        "type": "shader",
+        "position": {
+          "x": 2880,
+          "y": 3680
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "fraction"
+          }
+        }
+      },
+      {
+        "id": "kw3_2",
+        "type": "shader",
+        "position": {
+          "x": 3200,
+          "y": 3680
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "smoothMax",
+            "b": 0.2,
+            "c": 0.1
+          }
+        }
+      },
+      {
+        "id": "kw3_3",
+        "type": "shader",
+        "position": {
+          "x": 3520,
+          "y": 3680
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "sine"
+          }
+        }
+      },
+      {
+        "id": "kw3_4",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 4140
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "absolute"
+          }
+        }
+      },
+      {
+        "id": "kw3_5",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 4140
+        },
+        "data": {
+          "kind": "smoothstep",
+          "values": {
+            "low": 0,
+            "high": 1
+          }
+        }
+      },
+      {
+        "id": "kw3_6",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 4140
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "wrap",
+            "b": 0,
+            "c": 1
+          }
+        }
+      },
+      {
+        "id": "kw3_7",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 4140
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "b": 1.01
+          }
+        }
+      },
+      {
+        "id": "kw3_8",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 4140
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "b": 0.003
+          }
+        }
+      },
+      {
+        "id": "kw3_9",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 4140
+        },
+        "data": {
+          "kind": "clamp",
+          "values": {
+            "type": "minMax",
+            "min": 0,
+            "max": 1
+          }
+        }
+      },
+      {
+        "id": "kw3_10",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 4140
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "mode": "mix",
+            "b": 1
+          }
+        }
+      },
+      {
+        "id": "kw3_11",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 4140
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "fraction"
+          }
+        }
+      },
+      {
+        "id": "kw3_12",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 4140
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "smoothMax",
+            "b": 0.2,
+            "c": 0.1
+          }
+        }
+      },
+      {
+        "id": "kw3_13",
+        "type": "shader",
+        "position": {
+          "x": 2880,
+          "y": 4140
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "sine"
+          }
+        }
+      },
+      {
+        "id": "kw3_14",
+        "type": "shader",
+        "position": {
+          "x": 3200,
+          "y": 4140
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "absolute"
+          }
+        }
+      },
+      {
+        "id": "kwsum0_0",
+        "type": "shader",
+        "position": {
+          "x": 3520,
+          "y": 4140
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "kwsum0_2",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 4600
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "kwsum1_0",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 4600
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "drift",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 4600
+        },
+        "data": {
+          "kind": "combineXYZ",
+          "values": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        }
+      },
+      {
+        "id": "map",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 4600
+        },
+        "data": {
+          "kind": "mapping",
+          "values": {
+            "rotation": 0.05,
+            "scale": [
+              2,
+              2,
+              1
+            ],
+            "pivot": [
+              0.5,
+              0.5,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "id": "noise",
+        "type": "shader",
+        "position": {
+          "x": 1280,
+          "y": 4600
+        },
+        "data": {
+          "kind": "noiseTexture",
+          "values": {
+            "scale": 6,
+            "detail": 8,
+            "roughness": 0.6,
+            "distortion": 1
+          }
+        }
+      },
+      {
+        "id": "voronoi",
+        "type": "shader",
+        "position": {
+          "x": 1600,
+          "y": 4600
+        },
+        "data": {
+          "kind": "voronoi",
+          "values": {
+            "scale": 10,
+            "randomness": 1
+          }
+        }
+      },
+      {
+        "id": "ramp",
+        "type": "shader",
+        "position": {
+          "x": 1920,
+          "y": 4600
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "ease",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0,
+                    0,
+                    0.1
+                  ]
+                },
+                {
+                  "position": 0.5,
+                  "color": [
+                    0.6,
+                    0.1,
+                    0.8
+                  ]
+                },
+                {
+                  "position": 1,
+                  "color": [
+                    1,
+                    0.9,
+                    0.5
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "tex",
+        "type": "shader",
+        "position": {
+          "x": 2240,
+          "y": 4600
+        },
+        "data": {
+          "kind": "colorMix",
+          "values": {
+            "mode": "overlay",
+            "factor": 0.5
+          }
+        }
+      },
+      {
+        "id": "specColor",
+        "type": "shader",
+        "position": {
+          "x": 2560,
+          "y": 4600
+        },
+        "data": {
+          "kind": "combineColor",
+          "values": {
+            "mode": "hsv",
+            "a": 0.6,
+            "b": 0.8,
+            "c": 1
+          }
+        }
+      },
+      {
+        "id": "layer",
+        "type": "shader",
+        "position": {
+          "x": 2880,
+          "y": 4600
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "screen",
+            "opacity": 0.8
+          }
+        }
+      },
+      {
+        "id": "gainMix",
+        "type": "shader",
+        "position": {
+          "x": 3200,
+          "y": 4600
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "add",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "lift",
+        "type": "shader",
+        "position": {
+          "x": 3520,
+          "y": 4600
+        },
+        "data": {
+          "kind": "hueSaturation",
+          "values": {
+            "hue": 0,
+            "saturation": 1,
+            "value": 1,
+            "factor": 1
+          }
+        }
+      },
+      {
+        "id": "trails",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 5060
+        },
+        "data": {
+          "kind": "trails",
+          "values": {
+            "decay": 0.8,
+            "offset": 1
+          }
+        }
+      },
+      {
+        "id": "blur",
+        "type": "shader",
+        "position": {
+          "x": 320,
+          "y": 5060
+        },
+        "data": {
+          "kind": "stripBlur",
+          "values": {
+            "spread": 4,
+            "decay": 0.5
+          }
+        }
+      },
+      {
+        "id": "ceiling",
+        "type": "shader",
+        "position": {
+          "x": 640,
+          "y": 5060
+        },
+        "data": {
+          "kind": "brightnessCeiling",
+          "values": {
+            "ceiling": 0.9
+          }
+        }
+      },
+      {
+        "id": "out",
+        "type": "shader",
+        "position": {
+          "x": 960,
+          "y": 5060
+        },
+        "data": {
+          "kind": "output",
+          "values": {
+            "gamma": 2.2
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-source-audio-audio-audio",
+        "source": "source",
+        "sourceHandle": "audio",
+        "target": "audio",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-source-audio-fft0-audio",
+        "source": "source",
+        "sourceHandle": "audio",
+        "target": "fft0",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-fft0-spectrum-spec0-spectrum",
+        "source": "fft0",
+        "sourceHandle": "spectrum",
+        "target": "spec0",
+        "targetHandle": "spectrum",
+        "style": {
+          "stroke": "#d9568b",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-source-audio-fft1-audio",
+        "source": "source",
+        "sourceHandle": "audio",
+        "target": "fft1",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-fft1-spectrum-split1-spectrum",
+        "source": "fft1",
+        "sourceHandle": "spectrum",
+        "target": "split1",
+        "targetHandle": "spectrum",
+        "style": {
+          "stroke": "#d9568b",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-level-kc0s0-signal",
+        "source": "audio",
+        "sourceHandle": "level",
+        "target": "kc0s0",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s0-envelope-kc0s1-signal",
+        "source": "kc0s0",
+        "sourceHandle": "envelope",
+        "target": "kc0s1",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s1-value-kc0s2-a",
+        "source": "kc0s1",
+        "sourceHandle": "value",
+        "target": "kc0s2",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s2-result-kc0s3-input",
+        "source": "kc0s2",
+        "sourceHandle": "result",
+        "target": "kc0s3",
+        "targetHandle": "input",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s3-value-kc0s4-signal",
+        "source": "kc0s3",
+        "sourceHandle": "value",
+        "target": "kc0s4",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s4-peak-kc0s5-value",
+        "source": "kc0s4",
+        "sourceHandle": "peak",
+        "target": "kc0s5",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s5-result-kc0s6-value",
+        "source": "kc0s5",
+        "sourceHandle": "result",
+        "target": "kc0s6",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s6-result-kc0s7-signal",
+        "source": "kc0s6",
+        "sourceHandle": "result",
+        "target": "kc0s7",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s7-gate-kc0s8-trigger",
+        "source": "kc0s7",
+        "sourceHandle": "gate",
+        "target": "kc0s8",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s7-gate-kc0s8-signal",
+        "source": "kc0s7",
+        "sourceHandle": "gate",
+        "target": "kc0s8",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s8-value-kc0s9-trigger",
+        "source": "kc0s8",
+        "sourceHandle": "value",
+        "target": "kc0s9",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s9-phase-kc0s10-trigger",
+        "source": "kc0s9",
+        "sourceHandle": "phase",
+        "target": "kc0s10",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s10-value-kc0s11-rate",
+        "source": "kc0s10",
+        "sourceHandle": "value",
+        "target": "kc0s11",
+        "targetHandle": "rate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-kick-kc1s0-signal",
+        "source": "audio",
+        "sourceHandle": "kick",
+        "target": "kc1s0",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s0-value-kc1s1-a",
+        "source": "kc1s0",
+        "sourceHandle": "value",
+        "target": "kc1s1",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s1-result-kc1s2-input",
+        "source": "kc1s1",
+        "sourceHandle": "result",
+        "target": "kc1s2",
+        "targetHandle": "input",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s2-value-kc1s3-signal",
+        "source": "kc1s2",
+        "sourceHandle": "value",
+        "target": "kc1s3",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s3-peak-kc1s4-value",
+        "source": "kc1s3",
+        "sourceHandle": "peak",
+        "target": "kc1s4",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s4-result-kc1s5-value",
+        "source": "kc1s4",
+        "sourceHandle": "result",
+        "target": "kc1s5",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s5-result-kc1s6-signal",
+        "source": "kc1s5",
+        "sourceHandle": "result",
+        "target": "kc1s6",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s6-gate-kc1s7-trigger",
+        "source": "kc1s6",
+        "sourceHandle": "gate",
+        "target": "kc1s7",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s6-gate-kc1s7-signal",
+        "source": "kc1s6",
+        "sourceHandle": "gate",
+        "target": "kc1s7",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s7-value-kc1s8-trigger",
+        "source": "kc1s7",
+        "sourceHandle": "value",
+        "target": "kc1s8",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s8-phase-kc1s9-trigger",
+        "source": "kc1s8",
+        "sourceHandle": "phase",
+        "target": "kc1s9",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s9-value-kc1s10-rate",
+        "source": "kc1s9",
+        "sourceHandle": "value",
+        "target": "kc1s10",
+        "targetHandle": "rate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s10-value-kc1s11-trigger",
+        "source": "kc1s10",
+        "sourceHandle": "value",
+        "target": "kc1s11",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-sub-kc2s0-a",
+        "source": "audio",
+        "sourceHandle": "sub",
+        "target": "kc2s0",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s0-result-kc2s1-input",
+        "source": "kc2s0",
+        "sourceHandle": "result",
+        "target": "kc2s1",
+        "targetHandle": "input",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s1-value-kc2s2-signal",
+        "source": "kc2s1",
+        "sourceHandle": "value",
+        "target": "kc2s2",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s2-peak-kc2s3-value",
+        "source": "kc2s2",
+        "sourceHandle": "peak",
+        "target": "kc2s3",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s3-result-kc2s4-value",
+        "source": "kc2s3",
+        "sourceHandle": "result",
+        "target": "kc2s4",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s4-result-kc2s5-signal",
+        "source": "kc2s4",
+        "sourceHandle": "result",
+        "target": "kc2s5",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s5-gate-kc2s6-trigger",
+        "source": "kc2s5",
+        "sourceHandle": "gate",
+        "target": "kc2s6",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s5-gate-kc2s6-signal",
+        "source": "kc2s5",
+        "sourceHandle": "gate",
+        "target": "kc2s6",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s6-value-kc2s7-trigger",
+        "source": "kc2s6",
+        "sourceHandle": "value",
+        "target": "kc2s7",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s7-phase-kc2s8-trigger",
+        "source": "kc2s7",
+        "sourceHandle": "phase",
+        "target": "kc2s8",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s8-value-kc2s9-rate",
+        "source": "kc2s8",
+        "sourceHandle": "value",
+        "target": "kc2s9",
+        "targetHandle": "rate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s9-value-kc2s10-trigger",
+        "source": "kc2s9",
+        "sourceHandle": "value",
+        "target": "kc2s10",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s10-phase-kc2s11-trigger",
+        "source": "kc2s10",
+        "sourceHandle": "phase",
+        "target": "kc2s11",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-lowMid-kc3s0-input",
+        "source": "audio",
+        "sourceHandle": "lowMid",
+        "target": "kc3s0",
+        "targetHandle": "input",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s0-value-kc3s1-signal",
+        "source": "kc3s0",
+        "sourceHandle": "value",
+        "target": "kc3s1",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s1-peak-kc3s2-value",
+        "source": "kc3s1",
+        "sourceHandle": "peak",
+        "target": "kc3s2",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s2-result-kc3s3-value",
+        "source": "kc3s2",
+        "sourceHandle": "result",
+        "target": "kc3s3",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s3-result-kc3s4-signal",
+        "source": "kc3s3",
+        "sourceHandle": "result",
+        "target": "kc3s4",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s4-gate-kc3s5-trigger",
+        "source": "kc3s4",
+        "sourceHandle": "gate",
+        "target": "kc3s5",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s4-gate-kc3s5-signal",
+        "source": "kc3s4",
+        "sourceHandle": "gate",
+        "target": "kc3s5",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s5-value-kc3s6-trigger",
+        "source": "kc3s5",
+        "sourceHandle": "value",
+        "target": "kc3s6",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s6-phase-kc3s7-trigger",
+        "source": "kc3s6",
+        "sourceHandle": "phase",
+        "target": "kc3s7",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s7-value-kc3s8-rate",
+        "source": "kc3s7",
+        "sourceHandle": "value",
+        "target": "kc3s8",
+        "targetHandle": "rate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s8-value-kc3s9-trigger",
+        "source": "kc3s8",
+        "sourceHandle": "value",
+        "target": "kc3s9",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s9-phase-kc3s10-trigger",
+        "source": "kc3s9",
+        "sourceHandle": "phase",
+        "target": "kc3s10",
+        "targetHandle": "trigger",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s10-state-kc3s11-gate",
+        "source": "kc3s10",
+        "sourceHandle": "state",
+        "target": "kc3s11",
+        "targetHandle": "gate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc0s11-value-ksum0_0-a",
+        "source": "kc0s11",
+        "sourceHandle": "value",
+        "target": "ksum0_0",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc1s11-phase-ksum0_0-b",
+        "source": "kc1s11",
+        "sourceHandle": "phase",
+        "target": "ksum0_0",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc2s11-state-ksum0_2-a",
+        "source": "kc2s11",
+        "sourceHandle": "state",
+        "target": "ksum0_2",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kc3s11-envelope-ksum0_2-b",
+        "source": "kc3s11",
+        "sourceHandle": "envelope",
+        "target": "ksum0_2",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ksum0_0-result-ksum1_0-a",
+        "source": "ksum0_0",
+        "sourceHandle": "result",
+        "target": "ksum1_0",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ksum0_2-result-ksum1_0-b",
+        "source": "ksum0_2",
+        "sourceHandle": "result",
+        "target": "ksum1_0",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-uv-x-kw0_0-a",
+        "source": "uv",
+        "sourceHandle": "x",
+        "target": "kw0_0",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_0-result-kw0_1-a",
+        "source": "kw0_0",
+        "sourceHandle": "result",
+        "target": "kw0_1",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_1-result-kw0_2-value",
+        "source": "kw0_1",
+        "sourceHandle": "result",
+        "target": "kw0_2",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_2-result-kw0_3-a",
+        "source": "kw0_2",
+        "sourceHandle": "result",
+        "target": "kw0_3",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_3-result-kw0_4-a",
+        "source": "kw0_3",
+        "sourceHandle": "result",
+        "target": "kw0_4",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_4-result-kw0_5-a",
+        "source": "kw0_4",
+        "sourceHandle": "result",
+        "target": "kw0_5",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_5-result-kw0_6-a",
+        "source": "kw0_5",
+        "sourceHandle": "result",
+        "target": "kw0_6",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_6-result-kw0_7-a",
+        "source": "kw0_6",
+        "sourceHandle": "result",
+        "target": "kw0_7",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_7-result-kw0_8-value",
+        "source": "kw0_7",
+        "sourceHandle": "result",
+        "target": "kw0_8",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_8-out-kw0_9-a",
+        "source": "kw0_8",
+        "sourceHandle": "out",
+        "target": "kw0_9",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_9-result-kw0_10-a",
+        "source": "kw0_9",
+        "sourceHandle": "result",
+        "target": "kw0_10",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_10-result-kw0_11-a",
+        "source": "kw0_10",
+        "sourceHandle": "result",
+        "target": "kw0_11",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_11-result-kw0_12-value",
+        "source": "kw0_11",
+        "sourceHandle": "result",
+        "target": "kw0_12",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_12-result-kw0_13-a",
+        "source": "kw0_12",
+        "sourceHandle": "result",
+        "target": "kw0_13",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_13-result-kw0_14-a",
+        "source": "kw0_13",
+        "sourceHandle": "result",
+        "target": "kw0_14",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-uv-y-kw1_0-a",
+        "source": "uv",
+        "sourceHandle": "y",
+        "target": "kw1_0",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_0-result-kw1_1-value",
+        "source": "kw1_0",
+        "sourceHandle": "result",
+        "target": "kw1_1",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_1-result-kw1_2-a",
+        "source": "kw1_1",
+        "sourceHandle": "result",
+        "target": "kw1_2",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_2-result-kw1_3-a",
+        "source": "kw1_2",
+        "sourceHandle": "result",
+        "target": "kw1_3",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_3-result-kw1_4-a",
+        "source": "kw1_3",
+        "sourceHandle": "result",
+        "target": "kw1_4",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_4-result-kw1_5-a",
+        "source": "kw1_4",
+        "sourceHandle": "result",
+        "target": "kw1_5",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_5-result-kw1_6-a",
+        "source": "kw1_5",
+        "sourceHandle": "result",
+        "target": "kw1_6",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_6-result-kw1_7-value",
+        "source": "kw1_6",
+        "sourceHandle": "result",
+        "target": "kw1_7",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_7-out-kw1_8-a",
+        "source": "kw1_7",
+        "sourceHandle": "out",
+        "target": "kw1_8",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_8-result-kw1_9-a",
+        "source": "kw1_8",
+        "sourceHandle": "result",
+        "target": "kw1_9",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_9-result-kw1_10-a",
+        "source": "kw1_9",
+        "sourceHandle": "result",
+        "target": "kw1_10",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_10-result-kw1_11-value",
+        "source": "kw1_10",
+        "sourceHandle": "result",
+        "target": "kw1_11",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_11-result-kw1_12-a",
+        "source": "kw1_11",
+        "sourceHandle": "result",
+        "target": "kw1_12",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_12-result-kw1_13-a",
+        "source": "kw1_12",
+        "sourceHandle": "result",
+        "target": "kw1_13",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_13-result-kw1_14-a",
+        "source": "kw1_13",
+        "sourceHandle": "result",
+        "target": "kw1_14",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-uv-x-kw2_0-value",
+        "source": "uv",
+        "sourceHandle": "x",
+        "target": "kw2_0",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_0-result-kw2_1-a",
+        "source": "kw2_0",
+        "sourceHandle": "result",
+        "target": "kw2_1",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_1-result-kw2_2-a",
+        "source": "kw2_1",
+        "sourceHandle": "result",
+        "target": "kw2_2",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_2-result-kw2_3-a",
+        "source": "kw2_2",
+        "sourceHandle": "result",
+        "target": "kw2_3",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_3-result-kw2_4-a",
+        "source": "kw2_3",
+        "sourceHandle": "result",
+        "target": "kw2_4",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_4-result-kw2_5-a",
+        "source": "kw2_4",
+        "sourceHandle": "result",
+        "target": "kw2_5",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_5-result-kw2_6-value",
+        "source": "kw2_5",
+        "sourceHandle": "result",
+        "target": "kw2_6",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_6-out-kw2_7-a",
+        "source": "kw2_6",
+        "sourceHandle": "out",
+        "target": "kw2_7",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_7-result-kw2_8-a",
+        "source": "kw2_7",
+        "sourceHandle": "result",
+        "target": "kw2_8",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_8-result-kw2_9-a",
+        "source": "kw2_8",
+        "sourceHandle": "result",
+        "target": "kw2_9",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_9-result-kw2_10-value",
+        "source": "kw2_9",
+        "sourceHandle": "result",
+        "target": "kw2_10",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_10-result-kw2_11-a",
+        "source": "kw2_10",
+        "sourceHandle": "result",
+        "target": "kw2_11",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_11-result-kw2_12-a",
+        "source": "kw2_11",
+        "sourceHandle": "result",
+        "target": "kw2_12",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_12-result-kw2_13-a",
+        "source": "kw2_12",
+        "sourceHandle": "result",
+        "target": "kw2_13",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_13-result-kw2_14-a",
+        "source": "kw2_13",
+        "sourceHandle": "result",
+        "target": "kw2_14",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-uv-y-kw3_0-a",
+        "source": "uv",
+        "sourceHandle": "y",
+        "target": "kw3_0",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_0-result-kw3_1-a",
+        "source": "kw3_0",
+        "sourceHandle": "result",
+        "target": "kw3_1",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_1-result-kw3_2-a",
+        "source": "kw3_1",
+        "sourceHandle": "result",
+        "target": "kw3_2",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_2-result-kw3_3-a",
+        "source": "kw3_2",
+        "sourceHandle": "result",
+        "target": "kw3_3",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_3-result-kw3_4-a",
+        "source": "kw3_3",
+        "sourceHandle": "result",
+        "target": "kw3_4",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_4-result-kw3_5-value",
+        "source": "kw3_4",
+        "sourceHandle": "result",
+        "target": "kw3_5",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_5-out-kw3_6-a",
+        "source": "kw3_5",
+        "sourceHandle": "out",
+        "target": "kw3_6",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_6-result-kw3_7-a",
+        "source": "kw3_6",
+        "sourceHandle": "result",
+        "target": "kw3_7",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_7-result-kw3_8-a",
+        "source": "kw3_7",
+        "sourceHandle": "result",
+        "target": "kw3_8",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_8-result-kw3_9-value",
+        "source": "kw3_8",
+        "sourceHandle": "result",
+        "target": "kw3_9",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_9-result-kw3_10-a",
+        "source": "kw3_9",
+        "sourceHandle": "result",
+        "target": "kw3_10",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_10-result-kw3_11-a",
+        "source": "kw3_10",
+        "sourceHandle": "result",
+        "target": "kw3_11",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_11-result-kw3_12-a",
+        "source": "kw3_11",
+        "sourceHandle": "result",
+        "target": "kw3_12",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_12-result-kw3_13-a",
+        "source": "kw3_12",
+        "sourceHandle": "result",
+        "target": "kw3_13",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_13-result-kw3_14-a",
+        "source": "kw3_13",
+        "sourceHandle": "result",
+        "target": "kw3_14",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw0_14-result-kwsum0_0-a",
+        "source": "kw0_14",
+        "sourceHandle": "result",
+        "target": "kwsum0_0",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw1_14-result-kwsum0_0-b",
+        "source": "kw1_14",
+        "sourceHandle": "result",
+        "target": "kwsum0_0",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw2_14-result-kwsum0_2-a",
+        "source": "kw2_14",
+        "sourceHandle": "result",
+        "target": "kwsum0_2",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kw3_14-result-kwsum0_2-b",
+        "source": "kw3_14",
+        "sourceHandle": "result",
+        "target": "kwsum0_2",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kwsum0_0-result-kwsum1_0-a",
+        "source": "kwsum0_0",
+        "sourceHandle": "result",
+        "target": "kwsum1_0",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kwsum0_2-result-kwsum1_0-b",
+        "source": "kwsum0_2",
+        "sourceHandle": "result",
+        "target": "kwsum1_0",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-time-time-drift-z",
+        "source": "time",
+        "sourceHandle": "time",
+        "target": "drift",
+        "targetHandle": "z",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-drift-vector-map-location",
+        "source": "drift",
+        "sourceHandle": "vector",
+        "target": "map",
+        "targetHandle": "location",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-map-vector-noise-vector",
+        "source": "map",
+        "sourceHandle": "vector",
+        "target": "noise",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-map-vector-voronoi-vector",
+        "source": "map",
+        "sourceHandle": "vector",
+        "target": "voronoi",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-noise-fac-ramp-fac",
+        "source": "noise",
+        "sourceHandle": "fac",
+        "target": "ramp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ramp-color-tex-color1",
+        "source": "ramp",
+        "sourceHandle": "color",
+        "target": "tex",
+        "targetHandle": "color1",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-voronoi-color-tex-color2",
+        "source": "voronoi",
+        "sourceHandle": "color",
+        "target": "tex",
+        "targetHandle": "color2",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-spec0-level-specColor-c",
+        "source": "spec0",
+        "sourceHandle": "level",
+        "target": "specColor",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-tex-color-layer-base",
+        "source": "tex",
+        "sourceHandle": "color",
+        "target": "layer",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-specColor-color-layer-layer",
+        "source": "specColor",
+        "sourceHandle": "color",
+        "target": "layer",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-kwsum1_0-result-layer-mask",
+        "source": "kwsum1_0",
+        "sourceHandle": "result",
+        "target": "layer",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ksum1_0-result-gainMix-a",
+        "source": "ksum1_0",
+        "sourceHandle": "result",
+        "target": "gainMix",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-split1-level-gainMix-b",
+        "source": "split1",
+        "sourceHandle": "level",
+        "target": "gainMix",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-gainMix-result-lift-hue",
+        "source": "gainMix",
+        "sourceHandle": "result",
+        "target": "lift",
+        "targetHandle": "hue",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-layer-color-lift-color",
+        "source": "layer",
+        "sourceHandle": "color",
+        "target": "lift",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-lift-color-trails-color",
+        "source": "lift",
+        "sourceHandle": "color",
+        "target": "trails",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-trails-color-blur-color",
+        "source": "trails",
+        "sourceHandle": "color",
+        "target": "blur",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-blur-color-ceiling-color",
+        "source": "blur",
+        "sourceHandle": "color",
+        "target": "ceiling",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-ceiling-color-out-color",
+        "source": "ceiling",
+        "sourceHandle": "color",
+        "target": "out",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      }
+    ]
+  }
+}

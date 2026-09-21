@@ -1,0 +1,53 @@
+import { describe, expect, it } from 'vitest'
+import { normalizeDoc } from './doc'
+import { GraphFileError, parseGraphFile, readGraphFile, serializeGraphFile } from './file'
+import { graph, node } from '@/lib/graph/testing'
+
+const doc = normalizeDoc(graph([node('uv', 'uv'), node('out', 'output')], [['uv.x', 'out.color']]))
+
+describe('serializeGraphFile / parseGraphFile', () => {
+  it('round-trips a graph unchanged', () => {
+    expect(parseGraphFile(serializeGraphFile(doc))).toEqual(doc)
+  })
+
+  it('rejects malformed JSON', () => {
+    expect(() => parseGraphFile('not json')).toThrow(GraphFileError)
+  })
+
+  it('rejects a file from a different app', () => {
+    expect(() => parseGraphFile(JSON.stringify({ app: 'other', formatVersion: 1, graph: doc }))).toThrow(/not a wledtoy graph file/)
+  })
+
+  it('rejects an unsupported envelope format version', () => {
+    expect(() => parseGraphFile(JSON.stringify({ app: 'wledtoy', formatVersion: 99, graph: doc }))).toThrow(/format version 99/)
+  })
+
+  it('rejects a graph saved by an older graph version', () => {
+    const old = JSON.stringify({ app: 'wledtoy', formatVersion: 1, graph: { ...doc, version: 2 } })
+    expect(() => parseGraphFile(old)).toThrow(/older version \(2\)/)
+  })
+
+  it('rejects a graph missing nodes or edges', () => {
+    expect(() => parseGraphFile(JSON.stringify({ app: 'wledtoy', formatVersion: 1, graph: { version: 3 } }))).toThrow(GraphFileError)
+  })
+})
+
+describe('readGraphFile', () => {
+  it('reports what a hand-written file gets wrong and the parser would otherwise swallow', () => {
+    const raw = graph(
+      [node('uv', 'uv'), node('time', 'time'), node('m', 'math', { op: 'add', nope: 1 }), node('out', 'output')],
+      [['uv.x', 'm.a'], ['time.time', 'm.a'], ['uv.what', 'm.b'], ['m.result', 'out.color']],
+    )
+    const { doc, problems } = readGraphFile(serializeGraphFile(raw))
+    expect(doc.edges.map((e) => e.source)).toEqual(['time', 'uv', 'm'])
+    expect(problems).toEqual([
+      'm: "nope" is not an input of math with these values (inputs: op, clamp, a, b)',
+      'edge time.time-m.a: "m.a" already has a link; only the last one is kept',
+      'edge uv.what-m.b: "uv" has no output "what"',
+    ])
+  })
+
+  it('finds nothing wrong with a graph the editor wrote', () => {
+    expect(readGraphFile(serializeGraphFile(doc)).problems).toEqual([])
+  })
+})

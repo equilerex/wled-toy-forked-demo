@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`default graph > compiles and renders the rainbow at time 0 1`] = `
+[
+  [
+    77,
+    29,
+    0,
+  ],
+  [
+    67,
+    77,
+    0,
+  ],
+  [
+    10,
+    77,
+    0,
+  ],
+  [
+    0,
+    77,
+    48,
+  ],
+  [
+    0,
+    48,
+    77,
+  ],
+  [
+    10,
+    0,
+    77,
+  ],
+  [
+    67,
+    0,
+    77,
+  ],
+  [
+    77,
+    0,
+    29,
+  ],
+]
+`;

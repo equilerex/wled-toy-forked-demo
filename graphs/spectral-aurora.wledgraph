@@ -1,0 +1,1690 @@
+{
+  "app": "wledtoy",
+  "formatVersion": 1,
+  "graph": {
+    "version": 3,
+    "nodes": [
+      {
+        "id": "song",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "data": {
+          "kind": "audioSource",
+          "values": {
+            "agcRelease": 6
+          }
+        }
+      },
+      {
+        "id": "bigFft",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 0
+        },
+        "data": {
+          "kind": "fft",
+          "values": {
+            "windowSize": "4096",
+            "hop": "1024",
+            "window": "blackman",
+            "scale": "log",
+            "bands": 96,
+            "fmin": 40,
+            "fmax": 16000
+          }
+        }
+      },
+      {
+        "id": "audio",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 300
+        },
+        "data": {
+          "kind": "audio",
+          "values": {}
+        }
+      },
+      {
+        "id": "bassBand",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 0
+        },
+        "data": {
+          "kind": "bandSplit",
+          "values": {
+            "low": 40,
+            "high": 160
+          }
+        }
+      },
+      {
+        "id": "bassEnergy",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 0
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.04,
+            "release": 0.6
+          }
+        }
+      },
+      {
+        "id": "driftSpeed",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 200
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Bass Drift",
+            "value": 0.25,
+            "min": 0,
+            "max": 1.5
+          }
+        }
+      },
+      {
+        "id": "driftRate",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 0
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "c": 0.05
+          }
+        }
+      },
+      {
+        "id": "curtainDrift",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 0
+        },
+        "data": {
+          "kind": "integrator",
+          "values": {
+            "wrap": false
+          }
+        }
+      },
+      {
+        "id": "curtainOffset",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 0
+        },
+        "data": {
+          "kind": "combineXYZ",
+          "values": {
+            "y": 5
+          }
+        }
+      },
+      {
+        "id": "curtainGain",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 220
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.05,
+            "inHigh": 0.6,
+            "outLow": 1.0,
+            "outHigh": 0.35
+          }
+        }
+      },
+      {
+        "id": "sensitivity",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 220
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.05,
+            "inHigh": 0.5,
+            "outLow": 0.35,
+            "outHigh": 0.9
+          }
+        }
+      },
+      {
+        "id": "hatEnvelope",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 440
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0,
+            "release": 0.1
+          }
+        }
+      },
+      {
+        "id": "sparkleAmount",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 640
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Hat Sparkle",
+            "value": 1.8,
+            "min": 0,
+            "max": 3
+          }
+        }
+      },
+      {
+        "id": "sparkleDensity",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 440
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "dropEnergy",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 640
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.5,
+            "release": 0.7
+          }
+        }
+      },
+      {
+        "id": "dropLift",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 500
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.095,
+            "inHigh": 0.14,
+            "outLow": 0,
+            "outHigh": 0.15
+          }
+        }
+      },
+      {
+        "id": "padEnvelope",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 840
+        },
+        "data": {
+          "kind": "envelopeFollower",
+          "values": {
+            "attack": 0.3,
+            "release": 1.2
+          }
+        }
+      },
+      {
+        "id": "padLift",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 760
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.25,
+            "inHigh": 0.45,
+            "outLow": -0.05,
+            "outHigh": 0.08
+          }
+        }
+      },
+      {
+        "id": "trebleBoost",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 500
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0.095,
+            "inHigh": 0.14,
+            "outLow": 3.4,
+            "outHigh": 6.5
+          }
+        }
+      },
+      {
+        "id": "uv",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1100
+        },
+        "data": {
+          "kind": "uv",
+          "values": {}
+        }
+      },
+      {
+        "id": "scanRow",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1260
+        },
+        "data": {
+          "kind": "iScanY",
+          "values": {}
+        }
+      },
+      {
+        "id": "historyDepth",
+        "type": "shader",
+        "position": {
+          "x": 0,
+          "y": 1380
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "History Depth",
+            "value": 0.5,
+            "min": 0.1,
+            "max": 2
+          }
+        }
+      },
+      {
+        "id": "rowOffset",
+        "type": "shader",
+        "position": {
+          "x": 300,
+          "y": 1100
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "subtract"
+          }
+        }
+      },
+      {
+        "id": "horizonDistance",
+        "type": "shader",
+        "position": {
+          "x": 600,
+          "y": 1100
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "absolute"
+          }
+        }
+      },
+      {
+        "id": "age",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 1100
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "waterfall",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 1100
+        },
+        "data": {
+          "kind": "spectrum",
+          "values": {}
+        }
+      },
+      {
+        "id": "trebleTilt",
+        "type": "shader",
+        "position": {
+          "x": 1200,
+          "y": 1300
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "outLow": 1.0
+          }
+        }
+      },
+      {
+        "id": "tiltedLevel",
+        "type": "shader",
+        "position": {
+          "x": 1500,
+          "y": 1100
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply"
+          }
+        }
+      },
+      {
+        "id": "levelShaped",
+        "type": "shader",
+        "position": {
+          "x": 1800,
+          "y": 1100
+        },
+        "data": {
+          "kind": "smoothstep",
+          "values": {
+            "low": 0.13
+          }
+        }
+      },
+      {
+        "id": "heightFade",
+        "type": "shader",
+        "position": {
+          "x": 900,
+          "y": 1300
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0,
+            "inHigh": 0.5,
+            "outLow": 1,
+            "outHigh": 0.75
+          }
+        }
+      },
+      {
+        "id": "fadedLevel",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 1100
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply"
+          }
+        }
+      },
+      {
+        "id": "curtainCoords",
+        "type": "shader",
+        "position": {
+          "x": 2100,
+          "y": 0
+        },
+        "data": {
+          "kind": "mapping",
+          "values": {
+            "scale": [
+              4,
+              0.35,
+              1
+            ],
+            "pivot": [
+              0,
+              0,
+              0
+            ],
+            "rotation": 0.03
+          }
+        }
+      },
+      {
+        "id": "curtainNoise",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 0
+        },
+        "data": {
+          "kind": "noiseTexture",
+          "values": {
+            "scale": 2,
+            "detail": 2.5,
+            "roughness": 0.55,
+            "distortion": 0.5
+          }
+        }
+      },
+      {
+        "id": "curtainShape",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 0
+        },
+        "data": {
+          "kind": "smoothstep",
+          "values": {
+            "low": 0.33,
+            "high": 0.66
+          }
+        }
+      },
+      {
+        "id": "curtainGate",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 200
+        },
+        "data": {
+          "kind": "mix",
+          "values": {
+            "a": 0.5,
+            "b": 1
+          }
+        }
+      },
+      {
+        "id": "waterfallBrightness",
+        "type": "shader",
+        "position": {
+          "x": 3000,
+          "y": 400
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "curtainHue",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 440
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": 0.75
+          }
+        }
+      },
+      {
+        "id": "curtainRamp",
+        "type": "shader",
+        "position": {
+          "x": 3000,
+          "y": 0
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "ease",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0.16,
+                    0,
+                    0.5
+                  ]
+                },
+                {
+                  "position": 0.35,
+                  "color": [
+                    0.35,
+                    0,
+                    0.95
+                  ]
+                },
+                {
+                  "position": 0.6,
+                  "color": [
+                    0,
+                    0.4,
+                    0.6
+                  ]
+                },
+                {
+                  "position": 0.85,
+                  "color": [
+                    0,
+                    0.8,
+                    0.4
+                  ]
+                },
+                {
+                  "position": 1,
+                  "color": [
+                    0.1,
+                    1,
+                    0.3
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "curtainLayer",
+        "type": "shader",
+        "position": {
+          "x": 3300,
+          "y": 0
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "mix",
+            "base": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "id": "colorOffset",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 700
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": 0.2
+          }
+        }
+      },
+      {
+        "id": "historyHeat",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 880
+        },
+        "data": {
+          "kind": "remap",
+          "values": {
+            "inLow": 0,
+            "inHigh": 0.06,
+            "outLow": 0.7,
+            "outHigh": 0.85
+          }
+        }
+      },
+      {
+        "id": "rampPosition",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 700
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd"
+          }
+        }
+      },
+      {
+        "id": "auroraRamp",
+        "type": "shader",
+        "position": {
+          "x": 3000,
+          "y": 640
+        },
+        "data": {
+          "kind": "colorRamp",
+          "values": {
+            "ramp": {
+              "interpolation": "linear",
+              "stops": [
+                {
+                  "position": 0,
+                  "color": [
+                    0.14,
+                    0,
+                    0.5
+                  ]
+                },
+                {
+                  "position": 0.22,
+                  "color": [
+                    0.35,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "position": 0.45,
+                  "color": [
+                    0,
+                    0.55,
+                    0.65
+                  ]
+                },
+                {
+                  "position": 0.68,
+                  "color": [
+                    0.02,
+                    1,
+                    0.22
+                  ]
+                },
+                {
+                  "position": 0.84,
+                  "color": [
+                    0.02,
+                    1,
+                    0.22
+                  ]
+                },
+                {
+                  "position": 0.9,
+                  "color": [
+                    1,
+                    0.75,
+                    0.04
+                  ]
+                },
+                {
+                  "position": 0.96,
+                  "color": [
+                    1,
+                    0.05,
+                    0.4
+                  ]
+                },
+                {
+                  "position": 1,
+                  "color": [
+                    1,
+                    0.05,
+                    0.4
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "waterfallOverCurtain",
+        "type": "shader",
+        "position": {
+          "x": 3600,
+          "y": 200
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "screen"
+          }
+        }
+      },
+      {
+        "id": "hatSparkle",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 1100
+        },
+        "data": {
+          "kind": "sparkle",
+          "values": {
+            "speed": 7
+          }
+        }
+      },
+      {
+        "id": "trebleRegion",
+        "type": "shader",
+        "position": {
+          "x": 2400,
+          "y": 1300
+        },
+        "data": {
+          "kind": "smoothstep",
+          "values": {
+            "low": 0.62,
+            "high": 0.85
+          }
+        }
+      },
+      {
+        "id": "trebleHits",
+        "type": "shader",
+        "position": {
+          "x": 2700,
+          "y": 1100
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiply",
+            "clamp": true
+          }
+        }
+      },
+      {
+        "id": "sparkleLayer",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 200
+        },
+        "data": {
+          "kind": "layerMix",
+          "values": {
+            "mode": "add",
+            "layer": [
+              1,
+              0.15,
+              0.55
+            ]
+          }
+        }
+      },
+      {
+        "id": "afterglow",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 520
+        },
+        "data": {
+          "kind": "knob",
+          "values": {
+            "label": "Afterglow",
+            "value": 0.3,
+            "min": 0,
+            "max": 1.5
+          }
+        }
+      },
+      {
+        "id": "glowTrails",
+        "type": "shader",
+        "position": {
+          "x": 4200,
+          "y": 200
+        },
+        "data": {
+          "kind": "trails",
+          "values": {}
+        }
+      },
+      {
+        "id": "out",
+        "type": "shader",
+        "position": {
+          "x": 4500,
+          "y": 200
+        },
+        "data": {
+          "kind": "output",
+          "values": {
+            "gamma": 2.2,
+            "dithering": "temporal",
+            "ceiling": 0.9
+          }
+        }
+      },
+      {
+        "id": "trailDecay",
+        "type": "shader",
+        "position": {
+          "x": 3900,
+          "y": 740
+        },
+        "data": {
+          "kind": "math",
+          "values": {
+            "op": "multiplyAdd",
+            "b": -0.5
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-song-audio-bigFft-audio",
+        "source": "song",
+        "sourceHandle": "audio",
+        "target": "bigFft",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-song-audio-audio-audio",
+        "source": "song",
+        "sourceHandle": "audio",
+        "target": "audio",
+        "targetHandle": "audio",
+        "style": {
+          "stroke": "#e0853d",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-bigFft-spectrum-bassBand-spectrum",
+        "source": "bigFft",
+        "sourceHandle": "spectrum",
+        "target": "bassBand",
+        "targetHandle": "spectrum",
+        "style": {
+          "stroke": "#d9568b",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-bassBand-level-bassEnergy-signal",
+        "source": "bassBand",
+        "sourceHandle": "level",
+        "target": "bassEnergy",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-bassEnergy-envelope-driftRate-a",
+        "source": "bassEnergy",
+        "sourceHandle": "envelope",
+        "target": "driftRate",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-driftSpeed-value-driftRate-b",
+        "source": "driftSpeed",
+        "sourceHandle": "value",
+        "target": "driftRate",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-driftRate-result-curtainDrift-rate",
+        "source": "driftRate",
+        "sourceHandle": "result",
+        "target": "curtainDrift",
+        "targetHandle": "rate",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainDrift-value-curtainOffset-x",
+        "source": "curtainDrift",
+        "sourceHandle": "value",
+        "target": "curtainOffset",
+        "targetHandle": "x",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainDrift-value-curtainOffset-z",
+        "source": "curtainDrift",
+        "sourceHandle": "value",
+        "target": "curtainOffset",
+        "targetHandle": "z",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-bassEnergy-envelope-curtainGain-value",
+        "source": "bassEnergy",
+        "sourceHandle": "envelope",
+        "target": "curtainGain",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-bassEnergy-envelope-sensitivity-value",
+        "source": "bassEnergy",
+        "sourceHandle": "envelope",
+        "target": "sensitivity",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sensitivity-result-levelShaped-high",
+        "source": "sensitivity",
+        "sourceHandle": "result",
+        "target": "levelShaped",
+        "targetHandle": "high",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-air-hatEnvelope-signal",
+        "source": "audio",
+        "sourceHandle": "air",
+        "target": "hatEnvelope",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hatEnvelope-envelope-sparkleDensity-a",
+        "source": "hatEnvelope",
+        "sourceHandle": "envelope",
+        "target": "sparkleDensity",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkleAmount-value-sparkleDensity-b",
+        "source": "sparkleAmount",
+        "sourceHandle": "value",
+        "target": "sparkleDensity",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-air-dropEnergy-signal",
+        "source": "audio",
+        "sourceHandle": "air",
+        "target": "dropEnergy",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropEnergy-envelope-dropLift-value",
+        "source": "dropEnergy",
+        "sourceHandle": "envelope",
+        "target": "dropLift",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropEnergy-envelope-trebleBoost-value",
+        "source": "dropEnergy",
+        "sourceHandle": "envelope",
+        "target": "trebleBoost",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-audio-vocal-padEnvelope-signal",
+        "source": "audio",
+        "sourceHandle": "vocal",
+        "target": "padEnvelope",
+        "targetHandle": "signal",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-padEnvelope-envelope-padLift-value",
+        "source": "padEnvelope",
+        "sourceHandle": "envelope",
+        "target": "padLift",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-trebleBoost-result-trebleTilt-outHigh",
+        "source": "trebleBoost",
+        "sourceHandle": "result",
+        "target": "trebleTilt",
+        "targetHandle": "outHigh",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-uv-y-rowOffset-a",
+        "source": "uv",
+        "sourceHandle": "y",
+        "target": "rowOffset",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-scanRow-out-rowOffset-b",
+        "source": "scanRow",
+        "sourceHandle": "out",
+        "target": "rowOffset",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-rowOffset-result-horizonDistance-a",
+        "source": "rowOffset",
+        "sourceHandle": "result",
+        "target": "horizonDistance",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-horizonDistance-result-age-a",
+        "source": "horizonDistance",
+        "sourceHandle": "result",
+        "target": "age",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-historyDepth-value-age-b",
+        "source": "historyDepth",
+        "sourceHandle": "value",
+        "target": "age",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-bigFft-spectrum-waterfall-spectrum",
+        "source": "bigFft",
+        "sourceHandle": "spectrum",
+        "target": "waterfall",
+        "targetHandle": "spectrum",
+        "style": {
+          "stroke": "#d9568b",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-age-result-waterfall-age",
+        "source": "age",
+        "sourceHandle": "result",
+        "target": "waterfall",
+        "targetHandle": "age",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-waterfall-level-tiltedLevel-a",
+        "source": "waterfall",
+        "sourceHandle": "level",
+        "target": "tiltedLevel",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-trebleTilt-result-tiltedLevel-b",
+        "source": "trebleTilt",
+        "sourceHandle": "result",
+        "target": "tiltedLevel",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-tiltedLevel-result-levelShaped-value",
+        "source": "tiltedLevel",
+        "sourceHandle": "result",
+        "target": "levelShaped",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-horizonDistance-result-heightFade-value",
+        "source": "horizonDistance",
+        "sourceHandle": "result",
+        "target": "heightFade",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-levelShaped-out-fadedLevel-a",
+        "source": "levelShaped",
+        "sourceHandle": "out",
+        "target": "fadedLevel",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-heightFade-result-fadedLevel-b",
+        "source": "heightFade",
+        "sourceHandle": "result",
+        "target": "fadedLevel",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainOffset-vector-curtainCoords-location",
+        "source": "curtainOffset",
+        "sourceHandle": "vector",
+        "target": "curtainCoords",
+        "targetHandle": "location",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainCoords-vector-curtainNoise-vector",
+        "source": "curtainCoords",
+        "sourceHandle": "vector",
+        "target": "curtainNoise",
+        "targetHandle": "vector",
+        "style": {
+          "stroke": "#6363c7",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainNoise-fac-curtainShape-value",
+        "source": "curtainNoise",
+        "sourceHandle": "fac",
+        "target": "curtainShape",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainShape-out-curtainGate-factor",
+        "source": "curtainShape",
+        "sourceHandle": "out",
+        "target": "curtainGate",
+        "targetHandle": "factor",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-fadedLevel-result-waterfallBrightness-a",
+        "source": "fadedLevel",
+        "sourceHandle": "result",
+        "target": "waterfallBrightness",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainGate-result-waterfallBrightness-b",
+        "source": "curtainGate",
+        "sourceHandle": "result",
+        "target": "waterfallBrightness",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainShape-out-curtainHue-a",
+        "source": "curtainShape",
+        "sourceHandle": "out",
+        "target": "curtainHue",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-padLift-result-curtainHue-c",
+        "source": "padLift",
+        "sourceHandle": "result",
+        "target": "curtainHue",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainHue-result-curtainRamp-fac",
+        "source": "curtainHue",
+        "sourceHandle": "result",
+        "target": "curtainRamp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainRamp-color-curtainLayer-layer",
+        "source": "curtainRamp",
+        "sourceHandle": "color",
+        "target": "curtainLayer",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainGain-result-curtainLayer-opacity",
+        "source": "curtainGain",
+        "sourceHandle": "result",
+        "target": "curtainLayer",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainShape-out-curtainLayer-mask",
+        "source": "curtainShape",
+        "sourceHandle": "out",
+        "target": "curtainLayer",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-horizonDistance-result-historyHeat-value",
+        "source": "horizonDistance",
+        "sourceHandle": "result",
+        "target": "historyHeat",
+        "targetHandle": "value",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-historyHeat-result-rampPosition-b",
+        "source": "historyHeat",
+        "sourceHandle": "result",
+        "target": "rampPosition",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainShape-out-colorOffset-a",
+        "source": "curtainShape",
+        "sourceHandle": "out",
+        "target": "colorOffset",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-dropLift-result-colorOffset-c",
+        "source": "dropLift",
+        "sourceHandle": "result",
+        "target": "colorOffset",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-levelShaped-out-rampPosition-a",
+        "source": "levelShaped",
+        "sourceHandle": "out",
+        "target": "rampPosition",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-colorOffset-result-rampPosition-c",
+        "source": "colorOffset",
+        "sourceHandle": "result",
+        "target": "rampPosition",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-rampPosition-result-auroraRamp-fac",
+        "source": "rampPosition",
+        "sourceHandle": "result",
+        "target": "auroraRamp",
+        "targetHandle": "fac",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-curtainLayer-color-waterfallOverCurtain-base",
+        "source": "curtainLayer",
+        "sourceHandle": "color",
+        "target": "waterfallOverCurtain",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-auroraRamp-color-waterfallOverCurtain-layer",
+        "source": "auroraRamp",
+        "sourceHandle": "color",
+        "target": "waterfallOverCurtain",
+        "targetHandle": "layer",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-waterfallBrightness-result-waterfallOverCurtain-mask",
+        "source": "waterfallBrightness",
+        "sourceHandle": "result",
+        "target": "waterfallOverCurtain",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkleDensity-result-hatSparkle-density",
+        "source": "sparkleDensity",
+        "sourceHandle": "result",
+        "target": "hatSparkle",
+        "targetHandle": "density",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-trebleRegion-out-trebleHits-a",
+        "source": "trebleRegion",
+        "sourceHandle": "out",
+        "target": "trebleHits",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-fadedLevel-result-trebleHits-b",
+        "source": "fadedLevel",
+        "sourceHandle": "result",
+        "target": "trebleHits",
+        "targetHandle": "b",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-waterfallOverCurtain-color-sparkleLayer-base",
+        "source": "waterfallOverCurtain",
+        "sourceHandle": "color",
+        "target": "sparkleLayer",
+        "targetHandle": "base",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-hatSparkle-out-sparkleLayer-opacity",
+        "source": "hatSparkle",
+        "sourceHandle": "out",
+        "target": "sparkleLayer",
+        "targetHandle": "opacity",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-trebleHits-result-sparkleLayer-mask",
+        "source": "trebleHits",
+        "sourceHandle": "result",
+        "target": "sparkleLayer",
+        "targetHandle": "mask",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-sparkleLayer-color-glowTrails-color",
+        "source": "sparkleLayer",
+        "sourceHandle": "color",
+        "target": "glowTrails",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-horizonDistance-result-trailDecay-a",
+        "source": "horizonDistance",
+        "sourceHandle": "result",
+        "target": "trailDecay",
+        "targetHandle": "a",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-afterglow-value-trailDecay-c",
+        "source": "afterglow",
+        "sourceHandle": "value",
+        "target": "trailDecay",
+        "targetHandle": "c",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-trailDecay-result-glowTrails-decay",
+        "source": "trailDecay",
+        "sourceHandle": "result",
+        "target": "glowTrails",
+        "targetHandle": "decay",
+        "style": {
+          "stroke": "#a1a1a1",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "id": "e-glowTrails-color-out-color",
+        "source": "glowTrails",
+        "sourceHandle": "color",
+        "target": "out",
+        "targetHandle": "color",
+        "style": {
+          "stroke": "#c7c729",
+          "strokeWidth": 2
+        }
+      }
+    ],
+    "scenes": [
+      {
+        "id": "scene-aurora",
+        "name": "Aurora",
+        "values": {
+          "driftSpeed": 0.25,
+          "sparkleAmount": 1.8,
+          "historyDepth": 0.5,
+          "afterglow": 0.3
+        }
+      },
+      {
+        "id": "scene-glacier",
+        "name": "Glacier",
+        "values": {
+          "driftSpeed": 0.1,
+          "sparkleAmount": 0.5,
+          "historyDepth": 1.6,
+          "afterglow": 0.9
+        }
+      },
+      {
+        "id": "scene-solar-storm",
+        "name": "Solar Storm",
+        "values": {
+          "driftSpeed": 1.2,
+          "sparkleAmount": 3,
+          "historyDepth": 0.4,
+          "afterglow": 0.12
+        }
+      }
+    ]
+  }
+}
