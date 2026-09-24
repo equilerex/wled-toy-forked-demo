@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 export const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', name: 'shader', component: () => import('./pages/ShaderPage.vue') },
     { path: '/graph', name: 'graph', component: () => import('./pages/GraphPage.vue') },
