@@ -6,6 +6,8 @@
 
 Live shader and node-graph playground for addressable LEDs. Write GLSL or build Blender-style node graphs, react to audio and MIDI, preview on a virtual strip or matrix, and stream to WLED over DDP, DNRGB, Art-Net or sACN.
 
+**Live Demo:** [https://music-engine.github.io/wled-toy](https://music-engine.github.io/wled-toy)
+
 WLEDToy is influenced by [ShaderToy](https://www.shadertoy.com/), [TouchDesigner](https://derivative.ca/), Blender's [Shader Editor](https://docs.blender.org/manual/en/latest/render/shader_nodes/introduction.html), and [WLED](https://github.com/Aircoookie/WLED).
 
 WLEDToy is a development tool built for Music Engine, a customizable live audio-reactive media player that renders to screens, addresable LEDs, and IoT devices. It's available as a standalone tool because it's useful on its own for live-testing WLED devices, measuring their performance, and writing custom WLED shaders in a node-graph editor for custom lighting projects.
